@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['qistack_20middleware_20library',['QiStack Middleware Library',['../index.html',1,'']]],
+  ['qfactor',['qFactor',['../structcy__stc__qi__object__q__factor__t.html#aae2e3c2339de1d9e9fe69e3cea8f470a',1,'cy_stc_qi_object_q_factor_t::qFactor()'],['../structcy__stc__qi__object__status__t.html#a7b4b4bd166afd043c8ca086d88d02344',1,'cy_stc_qi_object_status_t::qFactor()']]],
+  ['qfactormpa1',['qFactorMPA1',['../structcy__stc__qi__object__q__factor__t.html#a8822ca6b6985b1f65bcba8c4b6290b88',1,'cy_stc_qi_object_q_factor_t']]],
+  ['qfactorqueue',['qFactorQueue',['../structcy__stc__qi__object__q__factor__t.html#ac1111a578eb3a1ad257d33108dca0ef5',1,'cy_stc_qi_object_q_factor_t']]],
+  ['qfactorqueuedatabuf',['qFactorQueueDataBuf',['../structcy__stc__qi__object__q__factor__t.html#a37c784a6fb95ad6062417c5f95df28e2',1,'cy_stc_qi_object_q_factor_t']]],
+  ['qfodetected',['qFoDetected',['../structcy__stc__qi__object__q__factor__t.html#a282a2c2b11e6838f147a04f7e79388e4',1,'cy_stc_qi_object_q_factor_t']]],
+  ['qfosuspected',['qFoSuspected',['../structcy__stc__qi__object__power__loss__t.html#a37be2239f99cbd11c6c93da0e45f8322',1,'cy_stc_qi_object_power_loss_t']]],
+  ['qfrequency',['qFrequency',['../structcy__stc__qi__object__q__factor__t.html#ad8bd4941c69792be70a991fb25a9d0b1',1,'cy_stc_qi_object_q_factor_t']]],
+  ['qhighpeakcount',['qHighPeakCount',['../structcy__stc__qi__object__q__factor__t.html#ad0a1eef9c91252b8b5d83d4c305b5c76',1,'cy_stc_qi_object_q_factor_t']]],
+  ['qi_5fcoil_5fcur_5favg_5fsamples',['QI_COIL_CUR_AVG_SAMPLES',['../group__group__qistack__power__macros.html#ga41bb862fa2ac912abec679fc5f84aacb',1,'cy_qistack_power_manager.h']]],
+  ['qi_5fcoil_5fkp_5fcep_5fh',['QI_COIL_KP_CEP_H',['../group__group__qistack__power__macros.html#ga97a33f69c6bcead58b7046618cfc153e',1,'cy_qistack_power_manager.h']]],
+  ['qi_5fcoil_5fkp_5fcep_5fl',['QI_COIL_KP_CEP_L',['../group__group__qistack__power__macros.html#ga0b773efcdecf09bf1cc1ef52a6375b63',1,'cy_qistack_power_manager.h']]],
+  ['qi_5fcoil_5fkp_5flow_5fload',['QI_COIL_KP_LOW_LOAD',['../group__group__qistack__power__macros.html#gafd23b8350c0ed864c73e7491483f5261',1,'cy_qistack_power_manager.h']]],
+  ['qi_5fpid_5fcontrol_5ferror_5fdiv',['QI_PID_CONTROL_ERROR_DIV',['../group__group__qistack__power__macros.html#gad01d178ac6fa6dbccc20a51d1d77937a',1,'cy_qistack_power_manager.h']]],
+  ['qi_5ftimer_5fpid_5floop_5fms',['QI_TIMER_PID_LOOP_MS',['../group__group__qistack__power__macros.html#ga2d317663956b0ca2945ab9fe47ef51f7',1,'cy_qistack_power_manager.h']]],
+  ['qicommstat',['qiCommStat',['../structcy__stc__qi__context__t.html#af818408bd4aaf7ae9e4d0ea68f2b5f0a',1,'cy_stc_qi_context_t']]],
+  ['qidatastreamstat',['qiDataStreamStat',['../structcy__stc__qi__context__t.html#a94bd3340a7f9fee3df9a0dfb47e74883',1,'cy_stc_qi_context_t']]],
+  ['qimc',['qiMc',['../structcy__stc__qi__cfg__params__t.html#aedb5da3612c73a8a27932160fa2e9938',1,'cy_stc_qi_cfg_params_t']]],
+  ['qiobjectstat',['qiObjectStat',['../structcy__stc__qi__context__t.html#a45091d2da998a5de06fb1abbc03d42a5',1,'cy_stc_qi_context_t']]],
+  ['qipowerstat',['qiPowerStat',['../structcy__stc__qi__context__t.html#a54771505230307ed26b737083ed52617',1,'cy_stc_qi_context_t']]],
+  ['qisamsungstat',['qiSamsungStat',['../structcy__stc__qi__context__t.html#ad210636f0d6a7407cec1c8d34ff18014',1,'cy_stc_qi_context_t']]],
+  ['qistat',['qiStat',['../structcy__stc__qi__context__t.html#a6e5cc6a956207677701c5bc7482c7d84',1,'cy_stc_qi_context_t']]],
+  ['qistuartringbuf',['qiStUartRingBuf',['../structcy__stc__qi__status__t.html#a2eebaa2185e383cb3af05b093969aee7',1,'cy_stc_qi_status_t']]],
+  ['qpeaksqueue',['qPeaksQueue',['../structcy__stc__qi__object__q__factor__t.html#a95840f59e38abe5a3d746fd463782489',1,'cy_stc_qi_object_q_factor_t']]],
+  ['qpeaksqueuedatabuf',['qPeaksQueueDataBuf',['../structcy__stc__qi__object__q__factor__t.html#a24fc89a20ba166d5e815fc5cb538fe93',1,'cy_stc_qi_object_q_factor_t']]]
+];
