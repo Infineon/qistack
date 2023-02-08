@@ -1,12 +1,12 @@
 /***************************************************************************//**
 * \file cy_qistack_pm.h
-* \version 1.0
+* \version 2.0
 *
 * Header file of Qi Policy Manager of the QiStack middleware.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021-2022, Cypress Semiconductor Corporation. All rights reserved.
+* Copyright 2022-2023, Cypress Semiconductor Corporation. All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -58,7 +58,7 @@ cy_en_qi_status_t Cy_QiStack_Init(
        /* Pointer to the application callbacks. */
        cy_stc_qi_app_cbk_t * ptrAppCbk,
        /* Pointer to soft timer context. */
-       cy_stc_sw_timer_t *ptrTimerContext);
+       cy_stc_pdutils_sw_timer_t *ptrTimerContext);
 
 /*******************************************************************************
 * Function Name: Cy_QiStack_Start

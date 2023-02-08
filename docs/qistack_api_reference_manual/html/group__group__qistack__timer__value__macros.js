@@ -17,5 +17,8 @@ var group__group__qistack__timer__value__macros =
     [ "CY_QI_ASK_PKT_RECEPTION_TIME", "group__group__qistack__timer__value__macros.html#gaf06a78b60bc009b14ede4f413076289b", null ],
     [ "CY_QI_TIMER_PKT_TIMEOUT_TIME", "group__group__qistack__timer__value__macros.html#gad752460e04dd33a64d38396829096a58", null ],
     [ "CY_QI_FOD_EPT_TIME", "group__group__qistack__timer__value__macros.html#ga46f6d860132d1a56cbec2405e5935739", null ],
-    [ "CY_QI_T_NEG_TIME", "group__group__qistack__timer__value__macros.html#gaf9c4ba738f4679b6550a34dfbcdf4517", null ]
+    [ "CY_QI_T_NEG_TIME", "group__group__qistack__timer__value__macros.html#gaf9c4ba738f4679b6550a34dfbcdf4517", null ],
+    [ "CY_HIPP_NEG_TIME", "group__group__qistack__timer__value__macros.html#ga058beddc54c2b97649e4bae41c283ff5", null ],
+    [ "CY_QI_STAGGER_Df_TIME", "group__group__qistack__timer__value__macros.html#gaa68e94d3c8376d42ea8aa9ad8c67861c", null ],
+    [ "CY_QI_SAMSUNG_FSK_ACK_RETRY_TIME", "group__group__qistack__timer__value__macros.html#gaa759b0113bfcf2906eb2231088769e64", null ]
 ];

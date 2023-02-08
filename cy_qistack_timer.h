@@ -1,13 +1,13 @@
 /***************************************************************************//**
 * \file cy_qistack_timer.h
-* \version 1.0
+* \version 2.0
 *
 * Provides Software Timer Header File of the QiStack middleware.
 *
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021-2022, Cypress Semiconductor Corporation. All rights reserved.
+* Copyright 2022-2023, Cypress Semiconductor Corporation. All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -16,7 +16,7 @@
 #ifndef CY_QISTACK_TIMER_H
 #define CY_QISTACK_TIMER_H
 
-#include "cy_sw_timer.h"
+#include "cy_pdutils_sw_timer.h"
 
 /*******************************************************************************
 *                              Type Definitions
@@ -31,7 +31,7 @@
  * Qi timers offset in software timer stack.
  * This 256 ID boundary should not be used by any other system module.
  */
-#define CY_QI_TIMER_ID_OFFSET                               (512u)
+#define CY_QI_TIMER_ID_OFFSET   CY_PDUTILS_TIMER_WLC_START_ID
 
 /**
  * Timer ID allocation
@@ -80,6 +80,9 @@
 /** Timer ID for Negotiation Tnegotiate time */
 #define CY_QI_T_NEG_TIME_ID                                 ((CY_QI_TIMER_ID_OFFSET) + (34u))
 
+/** Timer ID for Negotiation Tnegotiate time */
+#define CY_HIPP_NEG_TIME_ID                                 ((CY_QI_TIMER_ID_OFFSET) + (35u))
+
 /** Power Transfer timers */
 
 #define CY_QI_TIMER_PWR_START_ID                            ((CY_QI_TIMER_ID_OFFSET) + (61u))
@@ -109,49 +112,56 @@
 /** Timer ID for receiving an ASK packet and passing it to ASK Event handler */
 #define CY_QI_ASK_PKT_RECEPTION_TIME_ID                     ((CY_QI_TIMER_ID_OFFSET) + (68u))
 
+/** Timer ID for staggered Duty Frequency Control During PID  */
+#define CY_QI_STAGGER_Df_TIME_ID                           ((CY_QI_TIMER_ID_OFFSET) + (69u))
+
+#define CY_QI_SAMSUNG_FSK_ACK_RETRY_TIME_ID                ((CY_QI_TIMER_ID_OFFSET) + (70u))
+
 /** Solution layer timers */
 
+#define CY_SOLN_TIMER_ID_OFFSET     CY_PDUTILS_TIMER_USER_START_ID
+
 /** Timer ID for LED task. Keep outside Qi timer IDs */
-#define CY_SOLN_TIMER_0_TIME_ID                             ((CY_QI_TIMER_ID_OFFSET) + (200u))
+#define CY_SOLN_TIMER_0_TIME_ID                             (CY_SOLN_TIMER_ID_OFFSET)
 
 /** Timer ID 1 */
-#define CY_SOLN_TIMER_1_TIME_ID                             ((CY_QI_TIMER_ID_OFFSET) + (201u))
+#define CY_SOLN_TIMER_1_TIME_ID                             ((CY_SOLN_TIMER_ID_OFFSET) + (1u))
 
 /** Timer ID 2 */
-#define CY_SOLN_TIMER_2_TIME_ID                             ((CY_QI_TIMER_ID_OFFSET) + (202u))
+#define CY_SOLN_TIMER_2_TIME_ID                             ((CY_SOLN_TIMER_ID_OFFSET) + (2u))
 
 /** Timer ID 3 */
-#define CY_SOLN_TIMER_3_TIME_ID                             ((CY_QI_TIMER_ID_OFFSET) + (203u))
+#define CY_SOLN_TIMER_3_TIME_ID                             ((CY_SOLN_TIMER_ID_OFFSET) + (3u))
 
 /** Timer ID 4 */
-#define CY_SOLN_TIMER_4_TIME_ID                             ((CY_QI_TIMER_ID_OFFSET) + (204u))
+#define CY_SOLN_TIMER_4_TIME_ID                             ((CY_SOLN_TIMER_ID_OFFSET) + (4u))
 
 /** Timer ID 5 */
-#define CY_SOLN_TIMER_5_TIME_ID                             ((CY_QI_TIMER_ID_OFFSET) + (205u))
+#define CY_SOLN_TIMER_5_TIME_ID                             ((CY_SOLN_TIMER_ID_OFFSET) + (5u))
 
 /** Timer ID for Authentication Optiga Stack. */
-#define CY_QI_TIMER_PKT_AUTH_TIMEOUT_TIME_ID                 ((CY_QI_TIMER_ID_OFFSET) + (206u))
+#define CY_QI_TIMER_PKT_AUTH_TIMEOUT_TIME_ID                 ((CY_SOLN_TIMER_ID_OFFSET) + (6u))
 
 /** Timer ID for Authentication Optiga Stack. */
-#define CY_QI_TIMER_AUTH_STACK_TASK                           ((CY_QI_TIMER_ID_OFFSET) + (207u))
+#define CY_QI_TIMER_AUTH_STACK_TASK                           ((CY_SOLN_TIMER_ID_OFFSET) + (7u))
 
 /** Timer ID for Authentication Optiga Stack. */
-#define CY_QI_TIMER_AUTH_STACK_LONG_TIMER                     ((CY_QI_TIMER_ID_OFFSET) + (208u))
+#define CY_QI_TIMER_AUTH_STACK_LONG_TIMER                     ((CY_SOLN_TIMER_ID_OFFSET) + (8u))
 
 /** Timer ID 9 */
-#define CY_SOLN_TIMER_9_TIME_ID                              ((CY_QI_TIMER_ID_OFFSET) + (209u))
+#define CY_SOLN_TIMER_9_TIME_ID                              ((CY_SOLN_TIMER_ID_OFFSET) + (9u))
 
 /** Timer ID 10 */
-#define CY_SOLN_TIMER_10_TIME_ID                             ((CY_QI_TIMER_ID_OFFSET) + (210u))
+#define CY_SOLN_TIMER_10_TIME_ID                             ((CY_SOLN_TIMER_ID_OFFSET) + (10u))
 
 /** Timer ID 11 */
-#define CY_SOLN_TIMER_11_TIME_ID                             ((CY_QI_TIMER_ID_OFFSET) + (211u))
+#define CY_SOLN_TIMER_11_TIME_ID                             ((CY_SOLN_TIMER_ID_OFFSET) + (11u))
 
 /** Timer ID 12 */
-#define CY_SOLN_TIMER_12_TIME_ID                             ((CY_QI_TIMER_ID_OFFSET) + (212u))
+#define CY_SOLN_TIMER_12_TIME_ID                             ((CY_SOLN_TIMER_ID_OFFSET) + (12u))
 
 /** Timer ID 13 */
-#define CY_SOLN_TIMER_13_TIME_ID                             ((CY_QI_TIMER_ID_OFFSET) + (213u))
+#define CY_SOLN_TIMER_13_TIME_ID                             ((CY_SOLN_TIMER_ID_OFFSET) + (13u))
 
 /** \} group_qistack_timer_id_macros */
 
@@ -219,6 +229,15 @@
 
 /** Negotiation Tnegotiate time in mS */
 #define CY_QI_T_NEG_TIME                                    (500u)  
+
+/** HiPP negotiation time in mS */
+#define CY_HIPP_NEG_TIME                                    (4000u)
+
+/** Timer for staggered Duty Frequency Control During PID in mS*/
+#define CY_QI_STAGGER_Df_TIME                              (3u)
+
+/** Timer for Retrying the FSK ACK Transaction if Samsung ASK Not received */
+#define CY_QI_SAMSUNG_FSK_ACK_RETRY_TIME                    (200u)
 
 /** \} group_qistack_timer_value_macros */
 

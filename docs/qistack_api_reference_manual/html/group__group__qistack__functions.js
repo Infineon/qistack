@@ -7,7 +7,7 @@ var group__group__qistack__functions =
     [ "Cy_QiStack_Fsk_Atn", "group__group__qistack__functions.html#ga78e186977bcec3041bd55fb3495938d0", null ],
     [ "Cy_QiStack_Fsk_ADT", "group__group__qistack__functions.html#ga59878d3c5772c08be1e3d27b8a5db794", null ],
     [ "Cy_QiStack_Fsk_SamsungAck", "group__group__qistack__functions.html#ga926a9c7f502ae8c85513a228f7ba301b", null ],
-    [ "Cy_QiStack_Init", "group__group__qistack__functions.html#ga765d71518b0e0afad598010ba6630a97", null ],
+    [ "Cy_QiStack_Init", "group__group__qistack__functions.html#gadf7cba8bb132d33750ac80da3eb6429f", null ],
     [ "Cy_QiStack_Start", "group__group__qistack__functions.html#ga7a9aef2b2f601b9426df50d16678766c", null ],
     [ "Cy_QiStack_Stop", "group__group__qistack__functions.html#gae551f3bc274d1b6b54e49b23d00e76b2", null ],
     [ "Cy_QiStack_Task", "group__group__qistack__functions.html#gaddcc6c775cf20ae9365417a77e60f1a8", null ],

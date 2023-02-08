@@ -1,12 +1,12 @@
 /***************************************************************************//**
 * \file cy_qistack_comm_manager.h
-* \version 1.0
+* \version 2.0
 *
 * Header file of Qi Communication Manager of the QiStack middleware.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021-2022, Cypress Semiconductor Corporation. All rights reserved.
+* Copyright 2021-2023, Cypress Semiconductor Corporation. All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -180,15 +180,6 @@ cy_en_qi_status_t Cy_QiStack_Comm_Ask_Config(
 void Cy_QiStack_Ask_Mod_Update(
        /* Pointer to the qistack context. */
        cy_stc_qi_context_t *qiCtx);
-
-/**
- * @brief Function to check given Packet is Reserved on Not
- * 
- * @param header 
- * @return true 
- * @return false 
- */
-bool Cy_QiStack_Is_Packet_Reserved(uint8_t header);
 
 /**
  * @brief Reset Data Transport Layer

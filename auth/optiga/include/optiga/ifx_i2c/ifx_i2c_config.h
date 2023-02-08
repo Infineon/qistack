@@ -72,7 +72,7 @@ extern "C" {
         #error "Unsupported value for IFX_I2C_FRAME_SIZE"
     #endif
 #else
-    #define IFX_I2C_FRAME_SIZE          (277U)
+    #define IFX_I2C_FRAME_SIZE          (115U)
 #endif
 
 /** @brief Transport Layer: header size */

@@ -6,6 +6,5 @@ var group__group__qistack__object__functions =
     [ "Cy_QiStack_Object_Q_Factor_Measure", "group__group__qistack__object__functions.html#ga67dd5174492971710dda9e231db1a7fb", null ],
     [ "Cy_QiStack_Object_Check_Q_Factor_Status", "group__group__qistack__object__functions.html#ga32223d35e4b39aca45e2e84cef6ab36e", null ],
     [ "Cy_QiStack_Object_Check_Res_Freq_Status", "group__group__qistack__object__functions.html#ga0ed9ab97eb306ea57bab789e5de3241d", null ],
-    [ "Cy_QiStack_Object_Check_Status", "group__group__qistack__object__functions.html#ga846b1bcaeadc22007c23c61582853ca4", null ],
     [ "Cy_QiStack_Validate_Calib_Data", "group__group__qistack__object__functions.html#ga5ef235fd5f89e83abce827fca3b1cac4", null ]
 ];

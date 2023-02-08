@@ -18,7 +18,6 @@ var group__group__qistack__macros =
     [ "CY_QI_CONFIG_ID_XID_MASK", "group__group__qistack__macros.html#ga9e82841cb95c8e51be8e3acce1c0eaa9", null ],
     [ "CY_SAMSUNG_ACK_0_MASK", "group__group__qistack__macros.html#ga734df8a8ca00f163f549e99d9e0792f2", null ],
     [ "CY_QI_CAP_DUP_MASK", "group__group__qistack__macros.html#ga0becfa59a2c28ea9439a49fcc3efc85d", null ],
-    [ "CY_QI_SYS_CLK_FREQ_REQ_KHZ", "group__group__qistack__macros.html#ga55decd54073f37520a7eaf5fce085768", null ],
     [ "CY_QI_FSK_CAP_MSG_SIZE", "group__group__qistack__macros.html#ga2eb6be2a01063f9e53bb74dfa5596323", null ],
     [ "CY_QI_FSK_DATA_SIZE", "group__group__qistack__macros.html#ga2d0f19cb9c8bfb43ead750d3cdef065f", null ],
     [ "CY_QI_ASK_DATA_SIZE", "group__group__qistack__macros.html#ga5bde70bf728a0f756373a49086aabcc0", null ],
@@ -32,6 +31,14 @@ var group__group__qistack__macros =
     [ "CY_QI_Q_FACTOR_RING_BUF_MAX_SIZE", "group__group__qistack__macros.html#ga403d0e3b5be6673699252c52aab585b0", null ],
     [ "CY_QI_PRX_EPT_RETRY_INFINITE", "group__group__qistack__macros.html#gad94162e7c416f2af56346e6965b20d82", null ],
     [ "CY_QI_PRX_EPT_PING_DELAY_NUL", "group__group__qistack__macros.html#gab73d65a4f54a0af7d9bf4c6872252602", null ],
+    [ "CY_QI_PRX_EPT_RST_TIMER_VAL", "group__group__qistack__macros.html#ga75154e62bfcd38f231a3e0ffc815a2e5", null ],
     [ "CY_QI_ADC_END_AUTH_MASK", "group__group__qistack__macros.html#ga3e458b31894c0536a92de78443205214", null ],
-    [ "CY_QI_PTX_AUTH_EN_TEMP", "group__group__qistack__macros.html#gabbe4fab2d62bf821a284574f3117f594", null ]
+    [ "CY_QI_PTX_AUTH_EN_TEMP", "group__group__qistack__macros.html#gabbe4fab2d62bf821a284574f3117f594", null ],
+    [ "COIL_VBRIDGE_MIN_VOLT", "group__group__qistack__macros.html#ga9a5a1ff3b28926977f2adf6b9a66e02e", null ],
+    [ "CY_QI_COIL_DEFAULT_FREQ_MODE_5", "group__group__qistack__macros.html#ga274ef748007c3b163219ea3dbdca2570", null ],
+    [ "CY_QI_COIL_FB_HB_SWITCH_FREQ", "group__group__qistack__macros.html#ga815cce57090db5ab97583840d5a60373", null ],
+    [ "CY_QI_COIL_FREQ_SWITCH_HB_FB", "group__group__qistack__macros.html#ga8570397d05497d7f6b0acfda7db2fff6", null ],
+    [ "CY_QI_COIL_DEFAULT_DUTY_FB_HiPP", "group__group__qistack__macros.html#gac7eb363799d5a07c09b6e370f529163e", null ],
+    [ "CY_QI_COIL_DEFAULT_DUTY_FB", "group__group__qistack__macros.html#gabb3dea30cf147eef26283150aa9d5d61", null ],
+    [ "CY_HIPP_COMMAND_REQUEST", "group__group__qistack__macros.html#gad74776d12863e62ecd6319681c76e78a", null ]
 ];

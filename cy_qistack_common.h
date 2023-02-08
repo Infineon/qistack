@@ -1,13 +1,13 @@
 /***************************************************************************//**
 * \file cy_qistack_common.h
-* \version 1.0
+* \version 2.0
 *
 * Provides Common Header File of the QiStack middleware.
 *
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021-2022, Cypress Semiconductor Corporation. All rights reserved.
+* Copyright 2021-2023, Cypress Semiconductor Corporation. All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -178,7 +178,11 @@
 
 /* Provide default values for feature selection macros where not already defined. */
 #ifndef CY_QI_SYS_CLK_FREQ_KHZ
-#define CY_QI_SYS_CLK_FREQ_KHZ                  (48000u)
+    #if CY_QI_MPA2_COIL
+        #define CY_QI_SYS_CLK_FREQ_KHZ                  (44000u)
+    #elif CY_QI_MPA11_COIL
+        #define CY_QI_SYS_CLK_FREQ_KHZ                  (48000u)
+    #endif
 #endif /* CY_QI_SYS_CLK_FREQ_KHZ */
 
 #ifndef CY_QI_EPP_MODE_EN
@@ -233,6 +237,11 @@
 #define CY_QI_SAMSUNG_POWER                         (22u)    /* WCPT-391 */
 /** Apple fast charge Power Number */
 #define CY_QI_APPLE_POWER                           (22u)   /* WCPT-391 */
+
+#if CY_QI_HIPP_MODE_EN
+/** HiPP mode maximum Power number */
+#define CY_HIPP_MODE_POWER                          (100u)
+#endif
 
 #define CY_QI_REPING_DELAY_DEF                      (12600u)
 
@@ -320,9 +329,15 @@
 #define CY_QI_CAP_AR_POS                            (6)
 #define CY_QI_CAP_BUF_MASK                          (0x1C)
 #define CY_QI_CAP_BUF_POS                           (2)
+#define CY_QI_CAP_NRS_MASK                          (0x01)
 
-/** System clock frequency requirement for Qi stack in KHz. */
-#define CY_QI_SYS_CLK_FREQ_REQ_KHZ                  (48000u)
+#if CY_QI_MPA2_COIL
+    /** System clock frequency requirement for Qi stack in KHz. */
+    #define CY_QI_SYS_CLK_FREQ_REQ_KHZ                  (44000u)
+#elif CY_QI_MPA11_COIL
+    /** System clock frequency requirement for Qi stack in KHz. */
+    #define CY_QI_SYS_CLK_FREQ_REQ_KHZ                  (48000u)
+#endif
 
 #if (CY_QI_SYS_CLK_FREQ_REQ_KHZ != CY_QI_SYS_CLK_FREQ_KHZ)
 #error "System Clock requirement failed"
@@ -372,7 +387,12 @@
 #define CY_QI_VOLT_SAMPLE_RING_BUF_SIZE             (40u)
 #define CY_QI_CUR_SAMPLE_RING_BUF_SIZE              (40u)
 
-#define CY_QI_SUDDEN_LOAD_DROP_MAX_VAL_MA           (500u)
+#if CY_QI_MPA2_COIL
+    #define CY_QI_SUDDEN_LOAD_DROP_MAX_VAL_MA           (750u)
+    #define CY_QI_SUDDEN_LOAD_DROP_MAX_VAL_MA_HIPP      (1000u)
+#elif CY_QI_MPA11_COIL
+    #define CY_QI_SUDDEN_LOAD_DROP_MAX_VAL_MA           (500u)
+#endif
 /* 
  * 75mA is minimum expected load with losses with practical PRx, 
  * consider 20% tolerance with this to set target load for load dump
@@ -392,6 +412,8 @@
 #define CY_QI_NO_F_POWER_PARAMS                     (2u)   
 
 #define CY_QI_LOAD_CALIB_MAX_RETRY_COUNT            (3u)
+
+#define CY_QI_PWR_LOSS_MAX_THRES_RETRY_COUNT        (1u)
 
 /* Macro to enable or disable Power Loss FOD */
 #define CY_QI_DEASSERT_FOD                          (0u)
@@ -429,9 +451,10 @@
 #define CY_QI_PRX_EPT_PING_DELAY_NFC                (60u)
 #define CY_QI_PRX_EPT_PING_DELAY_PTX_NFC            (60u)
 
+/** PRX EPT Digital ping restart Timer Configuration */
+#define CY_QI_PRX_EPT_RST_TIMER_VAL                 (250u)
 
 /** ADC, ADT and DSR Related Defines  */
-
 #define CY_QI_ADC_END_AUTH_MASK                      0x00
 #define CY_QI_ADC_START_AUTH_MASK                    0x02
 #define CY_QI_ADC_RESET_AUTH_MASK                    0x05
@@ -450,7 +473,39 @@
 #define CY_QI_PTX_AUTH_DUP                          (0)
 #define CY_QI_PTX_AUTH_BUFN                         (6)
 
+/** PID Power configuration */
 #define COIL_VBRIDGE_MIN_VOLT                       (3000u)
+
+/** 127.7Khz is default for Mode 5 of operation; x2 because of the divider circuit */
+#define CY_QI_COIL_DEFAULT_FREQ_MODE_5              (2540u)
+
+/* HB to FB Switch */
+#define CY_QI_COIL_DUTY_HB_FB_SWITCH_VAL            (250u)
+
+/** 145 Khz is default; x2 because of the divider circuit . Remove 2% from Clock accuracy on worst corners so 142.5Khz */
+#define CY_QI_COIL_FB_HB_SWITCH_FREQ                (2750u)
+
+/** Switch over frequency for Half Bridge to Full bridge Switch */
+#define CY_QI_COIL_FREQ_SWITCH_HB_FB                (2700u)
+
+/** 15% duty is default for Full bridge, x2 because of divider circuit and x10 for better resolution */
+#define CY_QI_COIL_DEFAULT_DUTY_FB_HiPP             (300u)
+
+/** 20% duty is default for Full bridge, x2 because of divider circuit and x10 for better resolution */
+#define CY_QI_COIL_DEFAULT_DUTY_FB                  (400u)
+
+/* HiPP XID packet magic number */
+#define HIPP_XID_PACKET_MAGIC_NUMBER                (0xC9u)
+
+/** HiPP commands */
+#define CY_HIPP_COMMAND_REQUEST                     (0x05u)
+#define CY_HIPP_COMMAND_PRX_OUT_VOLTAGE             (0x03u)
+#define CY_HIPP_DATA_H_HIPP_CODE                    (0x01u)
+#define CY_HIPP_DATA_H_HIPP_VERSION                 (0x04u)
+#define CY_HIPP_DATA_H_TA_INFO                      (0x80u)
+
+#define CY_HIPP_SHA256_OUTPUT_DATA_SIZE             (32u)
+#define CY_HIPP_SHA256_INPUT_DATA_SIZE              (7u)
 
 /** \} group_qistack_macros */
 
@@ -535,7 +590,9 @@ typedef enum
     CY_QI_APP_EVT_PTX_EPT_REASON,               /**< 0x31: Qi EPT reason event */
     CY_QI_APP_EVT_OBJ_DET_STARTED,              /**< 0x32: Qi Object detection started (not settled) event */
     CY_QI_APP_EVT_PWR_LOSS_PWR_CYCLE_COUNT,     /**< 0x33: Qi Power loss retry in progress event */
-    CY_QI_APP_TOTAL_EVENTS                      /**< 0xNN: Total number of application events. */
+    CY_QI_APP_EVT_ASK_PATH_SWITCH,              /**< 0x34: Qi ASK path switch event */
+
+    CY_QI_APP_TOTAL_EVENTS = 0xFF               /**< 0xNN: Total number of application events. */
 } cy_en_qi_app_evt_t;
 
 /**
@@ -554,6 +611,51 @@ typedef enum
     CY_QI_ASK_EVT_DET_END = 0x40,                  /**< 0x40: ASK Packet detection ended. */
     CY_QI_ASK_EVT_MAX                              /**< 0xNN: Total number of ASK BMC events. */
 } cy_en_qi_ask_pkt_evt_t;
+
+#if QI_STACK_ASK_DEBUG
+/**
+ * @typedef cy_en_qi_ask_fail_rs_t
+ * @brief Enum of ASK BMC decoder fail reason.
+ */
+typedef enum
+{
+    CY_QI_ASK_FAIL_RS_NONE = 0x00,                 /**< 0x00: No reason. */
+    CY_QI_ASK_FAIL_RS_NO_PKT_START,                /**< 0x01: No valid packet seen. */
+    CY_QI_ASK_FAIL_RS_BAD_PREAMBLE,                /**< 0x02: No valid preamble seen. */
+    CY_QI_ASK_FAIL_RS_BAD_HEADER,                  /**< 0x03: Invalid header seen. */
+    CY_QI_ASK_FAIL_RS_BAD_DATA,                    /**< 0x04: Invalid data seen. */
+    CY_QI_ASK_FAIL_RS_INV_CHECKSUM,                /**< 0x05: Invalid checksum seen. */
+    CY_QI_ASK_FAIL_RS_BAD_CHECKSUM                 /**< 0x06: Checksum does not match. */
+
+} cy_en_qi_ask_fail_rs_t;
+
+/**
+ * @typedef cy_en_qi_ask_fail_type_t
+ * @brief Enum of ASK BMC decoder fail type.
+ */
+typedef enum
+{
+    CY_QI_ASK_FAIL_TYPE_NONE = 0x00,               /**< 0x00: No reason. */
+    CY_QI_ASK_FAIL_TYPE_NO_START_BIT,              /**< 0x01: No valid start bit. */
+    CY_QI_ASK_FAIL_TYPE_NO_STOP_BIT,               /**< 0x02: No valid stop bit. */
+    CY_QI_ASK_FAIL_TYPE_BAD_PARITY_BIT,            /**< 0x03: Invalid parity bit. */
+    CY_QI_ASK_FAIL_TYPE_BIT_UNDERFLOW              /**< 0x04: In sufficient bit count. */
+
+} cy_en_qi_ask_fail_type_t;
+#endif /* QI_STACK_ASK_DEBUG */
+
+
+
+/**
+ * @typedef cy_en_qi_Settype
+ * @brief Enum for Event type during Set Voltage calls
+ * 
+ */
+typedef enum{
+    CY_QI_ANA_PING = 0x00,                          /**< 0x00: Analog Ping */
+    CY_QI_DIG_PING = 0x01,                          /**< 0x01: Digital Ping */
+    CY_QI_OTHER    = 0x02                           /**< 0x02: Other Events */
+}cy_en_qi_Settype;
 
 /**
  * @typedef cy_en_qi_ask_pkt_t
@@ -593,19 +695,19 @@ typedef enum {
     CY_QI_ASK_DATA_AUX_DATA_ODD_6 = 0x67,               /**< 0xNN: ASK Packet Type. */
     CY_QI_ASK_DATA_AUX_DATA_EVEN_7 = 0x76,              /**< 0xNN: ASK Packet Type. */
     CY_QI_ASK_DATA_AUX_DATA_ODD_7 = 0x77,               /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_1 = 0x18,                     /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_2 = 0x19,                     /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_3 = 0x28,                     /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_4 = 0x29,                     /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_5 = 0x38,                     /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_6 = 0x48,                     /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_7 = 0x58,                     /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_8 = 0x68,                     /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_9 = 0x78,                     /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_10 = 0x84,                    /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_11 = 0xA4,                    /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_12 = 0xC4,                    /**< 0xNN: ASK Packet Type. */
-    CY_QI_ASK_CONFIG_PROP_13 = 0xE2                     /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_1E = 0x18,                    /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_1O = 0x19,                    /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_2E = 0x28,                    /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_2O = 0x29,                    /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_3 = 0x38,                     /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_4 = 0x48,                     /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_5 = 0x58,                     /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_6 = 0x68,                     /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_7 = 0x78,                     /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_8 = 0x84,                     /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_12 = 0xA4,                    /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_16 = 0xC4,                    /**< 0xNN: ASK Packet Type. */
+    CY_QI_ASK_CONFIG_PROP_20 = 0xE2                     /**< 0xNN: ASK Packet Type. */
 } cy_en_qi_ask_pkt_t;
 
 /**
@@ -796,6 +898,67 @@ typedef enum
     CY_QI_PWR_LOSS_RCVD_LOAD,
 } cy_en_qi_pwr_loss_state_t;
 
+#if CY_QI_HIPP_MODE_EN
+
+typedef enum
+{
+    CY_QI_HIPP_STATE_NONE = 0,
+    CY_QI_HIPP_STATE_XID_RCVD,                /** Valid XID received */
+    CY_QI_HIPP_STATE_CFG_NEG_RCVD,            /** Configuration packet NEG bit is set */
+    CY_QI_HIPP_STATE_REQ_VERSION_REPLIED,     /** Request Version packet replied */
+    CY_QI_HIPP_STATE_HIPP_REQ_CODE_REPLIED,   /** HiPP Request code is verified*/
+    CY_QI_HIPP_STATE_HIPP_MUTUAL_IDENT_DONE,  /** HiPP code is verified and replied with ACK*/
+    CY_QI_HIPP_STATE_MAX,
+} cy_en_qi_hipp_state_t;
+
+/**
+ * @brief Structure to hold the Qi HiPP TA info.
+ */
+typedef struct
+{
+    uint8_t command;
+    uint8_t dataH;
+    uint8_t dataL;
+} cy_qi_hipp_ta_info;
+
+/**
+ * @brief Structure to hold the Qi Object layer HiPP Status.
+ */
+typedef struct {
+    /** Negotiation timedout flag */
+    bool negTimeout;
+
+    /** Object HippCustomerVersion */
+    bool rxCustomerVerPresent;
+    
+    /** Object HiPP GP/RP power class */
+    bool rxPowerClass;
+
+    /** PRx ID packet */
+    uint8_t prxIdPkt[7];
+
+    /** Rand number */
+    uint8_t randNo;
+
+    /** Object Hipp version */
+    uint8_t rxVer;
+
+    /** HiPP Version check retry count */
+    uint8_t verCheckRetry;
+
+    /** HiPP PRx output voltage received from PRx */
+    uint8_t prxOutputVolt;
+
+    /** Object Hipp Start code */
+    uint8_t rxStartCode[2];
+
+    /** Object Hipp Sha256 data */
+    uint8_t hash[CY_HIPP_SHA256_OUTPUT_DATA_SIZE];
+
+} cy_stc_qi_object_hipp_status_t;
+
+#endif
+
 /**
  * @typedef cy_en_qi_ver_t
  * @brief Enum of Qi specification versions (byte) list. 
@@ -815,12 +978,12 @@ typedef enum {
 /**
  * @typedef cy_en_qi_mc_t
  * @brief Enum of Qi compliant device manufacturer code.
- * @see todo
  */
 typedef enum {
     CY_QI_MC_NONE = 0x00,                   /**< Qi Manufacturere Code for:  */
-    CY_QI_MC_IPHONE_1 = 0x5A,                   /**< Qi Manufacturere Code for: Apple Iphone   */
-    CY_QI_MC_IPHONE_2 = 0xA5,                   /**< Qi Manufacturere Code for: Apple Iphone  */
+    CY_QI_MC_IPHONE_1 = 0x5A,               /**< Qi Manufacturere Code for: Apple Iphone   */
+    CY_QI_MC_IPHONE_2 = 0xA5,               /**< Qi Manufacturere Code for: Apple Iphone  */
+    CY_QI_MC_SAMSUNG = 0x42,                /**< Qi Manufacturere Code for: Samsung  */
     CY_QI_MC_MAX                           /**< 0xNN: Total versions. */
 } cy_en_qi_mc_t;
 
@@ -1015,12 +1178,15 @@ typedef enum
     CY_QI_ST_7_NEG_FOD,                          /**< 0x04: Qi State 7 Neg FOD Status. */
     CY_QI_ST_7_NEG_WPID,                         /**< 0x05: Qi State 7 Neg WPID. */
     CY_QI_ST_7_NEG_PROP,                         /**< 0x06: Qi State 7 Neg Proprietary. */
-    CY_QI_ST_7_NEG_RSVD,                         /**< 0x07: Qi State 7 Neg Reserved. */
-    CY_QI_ST_7_NEG_EPT,                          /**< 0x08: Qi State 7 Neg EPT. */
-    CY_QI_ST_7_NEG_AUTH,                         /**< 0x09: Qi State 7 Neg Authentication */
-    CY_QI_ST_7_NEG_PING_EXIT,                    /**< 0x0A: Qi State 7 Neg Wait Exit Ping. */
-    CY_QI_ST_7_NEG_BPP_PWR_EXIT,                 /**< 0x0B: Qi State 7 Neg Exit BPP Power Transfer. */
-    CY_QI_ST_7_NEG_EPP_PWR_EXIT,                 /**< 0x0C: Qi State 7 Neg Exit EPP Power Transfer. */
+#if CY_QI_HIPP_MODE_EN
+    CY_QI_ST_7_NEG_PROP3_HIPP,                   /**< 0x07: Qi State 7 Neg Proprietary 5 - HiPP Negotiation */
+#endif
+    CY_QI_ST_7_NEG_RSVD,                         /**< 0x08: Qi State 7 Neg Reserved. */
+    CY_QI_ST_7_NEG_EPT,                          /**< 0x09: Qi State 7 Neg EPT. */
+    CY_QI_ST_7_NEG_AUTH,                         /**< 0x0A: Qi State 7 Neg Authentication */
+    CY_QI_ST_7_NEG_PING_EXIT,                    /**< 0x0B: Qi State 7 Neg Wait Exit Ping. */
+    CY_QI_ST_7_NEG_BPP_PWR_EXIT,                 /**< 0x0C: Qi State 7 Neg Exit BPP Power Transfer. */
+    CY_QI_ST_7_NEG_EPP_PWR_EXIT,                 /**< 0x0D: Qi State 7 Neg Exit EPP Power Transfer. */
     CY_QI_ST_7_NEG_MAX                           /**< 0xNN: Qi State 7 Neg States Max. */
 } cy_en_qi_st_7_neg_t;
 
@@ -1135,7 +1301,11 @@ typedef enum {
     CY_QI_PTX_EPT_CAUSE_INVALID_RP2_ENTRY,               /**< 45: Invalid RP2 entry  */
     CY_QI_PTX_EPT_CAUSE_INVALID_RP4_ENTRY,               /**< 46: Invalid RP4 entry  */
     CY_QI_PTX_EPT_CAUSE_SRQ_FAILED_VER_EXCEED,           /**< 47: Failed SRQ, operating version exceed  */
-
+#if CY_QI_HIPP_MODE_EN
+    CY_QI_PTX_EPT_CAUSE_HIPP_NEG_TIMEOUT = 51,           /**< 51: HiPP negotiations timedout  */
+    CY_QI_PTX_EPT_CAUSE_HIPP_NO_IFIN_PRX,                /**< 52: No PD, however No HiPP Comm, i.e. Other than IFIN PRx.,  */
+    CY_QI_PTX_EPT_CAUSE_HIPP_IFIN_PRX_ENTERS_BPP,        /**< 53: No PD, and IFIN RX tries for BPP comm since ASK fails */
+#endif
     CY_QI_PTX_EPT_CAUSE_INVALID_PKT1 = 101,              /**< 101: Invalid packet1 */
     CY_QI_PTX_EPT_CAUSE_INVALID_PKT2,                    /**< 102: Invalid packet2 */
     CY_QI_PTX_EPT_CAUSE_INVALID_PKT3,                    /**< 103: Invalid packet3 */
@@ -1172,6 +1342,59 @@ typedef enum {
     CY_QI_PLOSS_REASON_MAX_PWRCYCLE_CNT,         /**< 0x03: Invalid packet */
 } cy_en_qi_ploss_reasons_t;
 
+#if CY_QI_MPA2_COIL
+/**
+ * @typedef cy_en_qi_power_modes_t
+ * @brief Power Modes for a Given coil
+ */
+
+typedef enum
+{
+    CY_QI_POWER_MODES_PD_BUCK = 0,
+    CY_QI_POWER_MODES_PD_FIXED_15V,
+    CY_QI_POWER_MODES_PD_FIXED_20V,
+    CY_QI_POWER_MODES_PD_PPS
+} cy_en_qi_power_modes_t;
+
+/**
+ * @typedef cy_en_qi_power_regulation_modes
+ * @brief Types of Regulation modes which are available
+ * 
+ */
+typedef enum
+{
+    CY_QI_REGULATION_MODE_DUTY_CYCLE = 0,
+    CY_QI_REGULATION_MODE_FREQ,
+    CY_QI_REGULATION_MODE_VOLTAGE,
+} cy_en_qi_power_regulation_modes_t;
+
+
+/**
+ * @typedef cy_en_qi_inverter_mode_t
+ * @brief Types of Inverter modes
+ * 
+ */
+typedef enum
+{
+    CY_QI_HALF_BRIDGE_INV = 0,
+    CY_QI_FULL_BRIDGE_INV
+} cy_en_qi_inverter_modes_t;
+
+#endif 
+
+#if (CCG_HPI_WLC_CMD_ENABLE != 0)
+/**
+ * @typedef cy_stc_qi_pkt_dbg_t
+ * @brief Structure to hold the CE, RPP and EPt packet count from solution space.
+ */
+typedef struct
+{
+    uint32_t cepCnt;
+    uint32_t rppCnt;
+    uint32_t eptCnt;
+    uint32_t pathSwCnt;
+} cy_stc_qi_pkt_dbg_t;
+#endif /* CCG_HPI_WLC_CMD_ENABLE */
 
 /* Forward declarations of structures. */
 struct cy_stc_qi_context;
@@ -1244,17 +1467,48 @@ typedef struct
             struct cy_stc_qi_context *qiCtx        /**< Qi context. */
             );      /**< Initialize Hardware Modules as required. */
 
+    void (*fsk_configure) (
+            struct cy_stc_qi_context *qiCtx        /**< Qi context. */
+            );      /**< Configure FSK for Given depth and Polarity */
+
+    void (*fsk_pwm_configure)(
+            struct cy_stc_qi_context *qiCtx,        /**<Qi context */
+            bool type                               /** <Configure PWM Type for Operating frequency(0) or Modulating frequency(1) */
+    );
+    
     void (*inv_fb_enable) (
             struct cy_stc_qi_context *qiCtx        /**< Qi context. */
             );      /**< Enable Inverter full bridge. */
-
+    
     void (*inv_fb_disable) (
-            struct cy_stc_qi_context *qiCtx        /**< Qi context. */
-            );      /**< Disable Inverter full bridge. */
+        struct cy_stc_qi_context *qiCtx        /**< Qi context. */
+        );      /**< Disable Inverter full bridge. */
+
+    void (*inv_configure) (
+        struct cy_stc_qi_context *qiCtx        /**< Qi context. */
+        );      /**< Configure Inverter for given frequency and Duty cycle. */
+    
+    void (*inv_reset) (
+    struct cy_stc_qi_context *qiCtx        /**< Qi context. */
+    );      /**< Configure Inverter for given frequency and Duty cycle. */
+
+    void (*apply_Anaping_Inv_settings) (
+            struct cy_stc_qi_context *qiCtx,        /**< Qi context. */
+            bool state                              /**< Entry/Exit from Analog ping */
+            );      /**< Apply Inverter settings for Analog ping. */
 
     void (*inv_send_analog_ping) (
             struct cy_stc_qi_context *qiCtx        /**< Qi context. */
             );      /**< Send inverter analog ping. */
+
+    cy_en_qi_object_status_t (*object_Check_Status)(
+            struct cy_stc_qi_context *qiCtx        /**< Qi context. */
+            );      /**< Check Object Present Status from Solution */
+    
+    void (*apply_Digping_Inv_settings) (
+        struct cy_stc_qi_context *qiCtx,        /**< Qi context. */
+        bool state                              /**< Entry/Exit from Analog ping */
+        );      /**< Apply Inverter settings for Digital ping. */
 
     void (*inv_start_digital_ping) (
             struct cy_stc_qi_context *qiCtx        /**< Qi context. */
@@ -1263,6 +1517,16 @@ typedef struct
     void (*inv_stop_digital_ping) (
             struct cy_stc_qi_context *qiCtx        /**< Qi context. */
             );      /**< Stop inverter digital ping. */
+
+    void (*populate_PID_constants) (
+            struct cy_stc_qi_context *qiCtx        /**< Qi context. */
+            );      /**< Populate PID Constants. */
+
+#if ((CY_QI_DEFLECTION_Q_EN) && (CY_QI_HIPP_MODE_EN))
+    void (*populate_defQ_constants) (
+            struct cy_stc_qi_context *qiCtx        /**< Qi context. */
+            );
+#endif /* ((CY_QI_DEFLECTION_Q_EN) && (CY_QI_HIPP_MODE_EN))*/
 
     void (*coil_src_enable) (
             struct cy_stc_qi_context *qiCtx        /**< Qi context. */
@@ -1276,10 +1540,11 @@ typedef struct
             struct cy_stc_qi_context *qiCtx       /**< Qi context. */
             );      /**< Returns coil voltage enable status. */
 
-    void (*coil_src_set_voltage) (
+    bool (*coil_src_set_voltage) (
             struct cy_stc_qi_context *qiCtx,       /**< Qi context. */
             uint16_t volt_mV,        /**< Target voltage in mV units. */
-            bool multiSlope        /**< Multi-slope VBTR */
+            bool multiSlope,        /**< Multi-slope VBTR */
+            cy_en_qi_Settype type   /**< Settings type for Set voltage */
             );      /**< Set coil voltage in mV units. */
 
     bool (*coil_src_ready_status) (
@@ -1309,6 +1574,36 @@ typedef struct
             struct cy_stc_qi_context *qiCtx,       /**< Qi context. */
             bool setorclear
             );  /**< Set Debug Pin with Value */
+    void (*enable_hipp)(
+            struct cy_stc_qi_context *qiCtx       /**< Qi context. */
+            );
+    void(*set_src_voltage)(
+            struct cy_stc_qi_context *qiCtx
+            );
+#if (CCG_HPI_WLC_CMD_ENABLE != 0)
+    void(*get_pkt_counters)(                     /**< Qi context. */
+            struct cy_stc_qi_context *qiCtx, cy_stc_qi_pkt_dbg_t *buffer
+            );
+    uint8_t (*get_adapter_type)(
+            struct cy_stc_qi_context *qiCtx
+            );
+    uint16_t (*get_ocp_thr) (
+            );
+    void (*set_ocp_thr) (
+            uint16_t ocpThr
+            );
+    uint16_t (*get_vin_vbus) (
+            );
+#endif /* CCG_HPI_WLC_CMD_ENABLE */
+    uint16_t (*get_vin_volt)(
+            struct cy_stc_qi_context *qiCtx,        /**< Qi context. */
+            uint8_t avgSamples     /**< Number of samples to average */
+            );
+    void (*get_sha256_data)
+    (struct cy_stc_qi_context *qiCtx,        /**< Qi context. */
+    uint8_t *in_buf,                         /** Input buf */
+    uint8_t buf_size,                        /** Size of Input buf */
+    uint8_t *out_buf);                       /** Output buf */
 } cy_stc_qi_app_cbk_t;
 
 /**
@@ -1371,6 +1666,22 @@ typedef struct {
 
     /** Re-ping delay */
     uint16_t rePingDelay;
+
+#if CY_QI_HIPP_MODE_EN
+    /** whether Hipp got enabled or not */
+    uint8_t  hippEnabled;
+    /** Hipp PRx o/p voltage */
+    uint8_t  hippPrxOutputVolt;
+#endif
+
+    /** Power level threshold for VBRG saturation (Upper Limit) */
+    uint8_t vbrgSaturationThr;
+
+    /** Flag raw RPP */
+    uint32_t rawRpp;
+
+    /** RPP Received for PLOSS */
+    bool rppPlossDeferred;
 
 } cy_stc_qi_pwr_params_t;
 
@@ -1447,6 +1758,9 @@ typedef struct {
     /** EPT: PTx NFC ping retry count. 0x00 - No retry, 0xFF - Infinite retry */
     uint8_t eptRetryPtxNfc;
 
+    /** EPT due to Reset, Use this status to pend Digital ping using CY_QI_PRX_EPT_RST_TIMER_VAL */
+    bool eptResetPendDPing;
+
 } cy_stc_qi_ept_t;
 
 /**
@@ -1486,6 +1800,9 @@ typedef struct {
     /** cause of PTx EPT */
     cy_en_qi_ptx_ept_reason_t ptxEptReason;
     
+    /** cause of Last PTx EPT */
+    cy_en_qi_ptx_ept_reason_t ptxLastEptReason;
+
     /** cause of PRx EPT */
     cy_en_qi_prx_ept_reason_t prxEptReason;
 
@@ -1494,6 +1811,9 @@ typedef struct {
 
     /** Receiver Signal Strength */
     uint8_t rxSignalStr;
+
+    /** Charge Status */
+    uint8_t chargeStat;
 
     /** Run Analog ping */
     bool anaPingPending;
@@ -1628,6 +1948,9 @@ typedef struct {
     /** Q high amplitude cycles count */
     uint32_t qHighPeakCount;
     
+    /** Q free air threshold  */
+    uint32_t qFreeAirFODThrPer;
+
     /** Queue for storing sampled Q factor */
     cy_stc_ring_buf_t qFactorQueue;
 
@@ -1645,6 +1968,21 @@ typedef struct {
 
     /** Status of whether Resonant Frequency FO detected or not */
     bool fresFoDetected;
+
+    /** Q Factor FO enabled */
+    bool qFoEnabled;
+
+    /** Scale factor for high reported Q calibration, percentage */
+    uint8_t qSFactorRxFriendly;
+
+    /** Scale factor for low reported Q calibration, percentage */
+    uint8_t qSFactorRxNonFriendly;
+
+#if ((CY_QI_DEFLECTION_Q_EN) && (CY_QI_HIPP_MODE_EN))
+    /** FO Detection through Deflection Q **/
+    bool qDqFoDetected;
+    uint8_t qAddResFreqThrPer;
+#endif
 
 } cy_stc_qi_object_q_factor_t;
 
@@ -1718,15 +2056,24 @@ typedef struct {
     /** Threshold */
     uint8_t discontinePowerCountMax;
 
+    /** FOD enabled */
+    uint8_t powLossFODEn;
+
+    /** Dynamic FOD enabled */
+    uint8_t dynamicFODEnabled;
+
      /* Keeps track of FO */
     uint8_t fodCount;
     uint8_t powerCycleCount;
+    uint8_t maxThresRetryCnt;
 
     uint32_t calcPwrLoss;
 
     uint32_t txPwrCalibMw;
 
     uint32_t prevFOPowLossVal;
+
+    uint32_t hippOffset;
     /** Power Loss FOD set reason */
     cy_en_qi_ploss_reasons_t pwrlossFodReason;
 }cy_stc_qi_object_power_loss_t;
@@ -1745,15 +2092,34 @@ typedef struct {
 
     /** FOD Status */
     bool fod;
-
+    
+    #if CY_QI_HIPP_MODE_EN
+    /** whether Hipp got enabled or not */
+    bool  hippEnabled;
+    #endif
     /** FOD EPT request */
     bool fodEptPending;
+#if (CCG_HPI_WLC_CMD_ENABLE != 0)
 
+    /** Dynamic Gain enabled */
+    uint8_t dynamicGainEnabled;
+
+    /** Dynamic Gain value*/
+    uint32_t dynamicGain;
+#endif /* CCG_HPI_WLC_CMD_ENABLE */
     /** Q factor data */
     cy_stc_qi_object_q_factor_t qFactor;
     
     /** Power Loss Structure */
     cy_stc_qi_object_power_loss_t powerLoss;
+
+    #if CY_QI_HIPP_MODE_EN
+    /** Hipp State */
+    cy_en_qi_hipp_state_t hippState;
+    
+    /** HiPP TA info */
+    cy_qi_hipp_ta_info taInfo;
+    #endif
 
 } cy_stc_qi_object_status_t;
 
@@ -1771,6 +2137,9 @@ typedef struct
     /** Checksum for the packet. */
     uint8_t checksum;
 
+    /** Data size */
+    uint8_t dataSize;
+
 } cy_stc_qi_ask_pkt_t;
 
 /**
@@ -1783,6 +2152,21 @@ typedef struct {
 
     /** Event notified by BMC Module */
     cy_en_qi_ask_pkt_evt_t askPktEvent;
+
+    /** 
+     * Start bit flag for the Qi state machine. 
+     * Need this to allow comm manager and Qi stack to handle flags without
+     * race condition. This flag is expected to be set by comm_manager and
+     * cleared by stack.
+     */
+    bool askPktStart;
+
+    /** 
+     * Packet ready flag for the Qi state machine. 
+     * Need this to allow comm manager and Qi stack to handle flags without
+     * race condition. 
+     */
+    bool askPktReady;
 
     /** Current ASK pkt */
     cy_stc_qi_ask_pkt_t askPkt;
@@ -1804,6 +2188,18 @@ typedef struct {
 
     /** CEP packet timeout delayed once due to ASK noise. */
     uint8_t askCEPTimeoutRetryCnt;
+
+    /** Added totalaskPktErrCnt,totalnoiseFailCEPktErrCnt &
+     * totalaskCEPTimeoutRetryCnt to keep track of ASK failures
+     */
+    /** Total ASK packet error count */
+    uint32_t totalaskPktErrCnt;
+
+    /** Total ASK noise or fail packet count within a CEP window */
+    uint32_t totalnoiseFailCEPktErrCnt;
+
+    /** Total CEP packet timeout delayed once due to ASK noise */
+    uint32_t totalaskCEPTimeoutRetryCnt;
 
     /** ASK path change status */
     bool askPathChanged;
@@ -1973,6 +2369,17 @@ typedef struct
     /** Internal state machine variable to hold the decoded RX packet. */
     cy_stc_qi_ask_pkt_t pkt;
 
+#if QI_STACK_ASK_DEBUG
+    /** Internal state machine variable for ASK fail details. */
+    cy_en_qi_ask_fail_rs_t askFailReason;
+
+    cy_en_qi_ask_fail_type_t askFailType;
+
+    uint16_t askFailBitLoc;
+
+    uint8_t askFailByteLoc;
+#endif /* QI_STACK_ASK_DEBUG */
+
     /** ASK packet decode event callback */
     cy_en_qi_status_t (*cy_cb_ask_pkt_evt)(
         void * callbackContext,       /**< Context. */
@@ -2065,8 +2472,14 @@ typedef struct __attribute__((__packed__))
     int8_t cepPrev;
 
     /** Repeated CEP count */
-    uint16_t cepRepeatCount;
+    uint8_t cepRepeatCount;
+#if CY_QI_MPA2_COIL
+    /** COunts oscillations between Positive and negative transitions of CEP */
+    uint8_t cepOscillationCount;
 
+    /** Counts Valid CEP i.e. 1/-1*/
+    uint8_t cepValidCount;
+#endif
     /** PID very low CEP condition status */
     bool cepLow;
 
@@ -2158,12 +2571,58 @@ typedef struct {
  */
 typedef struct 
 {
+#if CY_QI_MPA2_COIL
+    /** Regulation mode selected */
+    cy_en_qi_power_regulation_modes_t regMode;
+    
+    /** Inverter mode selected */
+    cy_en_qi_inverter_modes_t invMode;
+
+    /** PID Trigger Event set by the solution layer*/
+    bool pidTrigger;
+
+    /** Inner Duty Mode Enabled */
+    bool pidInnerDutyMode;
+
+    /** Inner DUty mode entered or not */
+    bool pidInnerDutyModeEntered;
+
+    /** Reflects Current status of Tx whether its in Apple Mode*/
+    bool appleModeStat;
+
+    /** Staggering required and Number of Remaining steps for stagger */
+    uint8_t pidDfStaggerStepsRemain;
+
+    /** Staggering delta value storage */
+    int16_t pidDfStaggerValRemain;
+
+        /** Duty cycle in 10x % */
+    uint16_t coilDuty;
+
+    /** Frequency in  10x Khz i.e. 1450 for 145Khz */
+    uint16_t coilFrequency;
+
+#if CY_QI_HIPP_MODE_EN
+
+    /** HiPP Min Frequency */
+    uint16_t hippMinFrequency;
+
+    /** HiPP Max Frequency */
+    uint16_t hippMaxFrequency;
+
+#endif 
+
+#endif
+
+    /** Apple Mode full bridge active */
+    bool appleModeFbActive;
+    
     /** Coil Voltage Requested in mV */
     uint16_t coilVoltReq;
 
     /** Coil Voltage in mV */
     uint16_t coilVolt;
-
+    
     /** Measured (during PID or RPP) Coil Current in mA */
     uint16_t coilCur;
 
@@ -2200,6 +2659,9 @@ typedef struct
     /** Rx Request for Samsung feature Enable */
     bool samsungRxPPDEFeatureEnable;
 
+    /** SPPDE FSK ACK Retry Tracker */
+    bool samsungFSKAckRetTimeout;
+
 }cy_stc_qi_samsung_ppde_t;
 
 /**
@@ -2234,6 +2696,11 @@ typedef struct cy_stc_qi_context
     /** Samsung PPDE Status Structure */
     cy_stc_qi_samsung_ppde_t qiSamsungStat;
 
+#if CY_QI_HIPP_MODE_EN
+    /** HiPP Status Structure */
+    cy_stc_qi_object_hipp_status_t hippStat;
+
+#endif
     /** Pointer to the USBPD0 PDL context information. */
     cy_stc_usbpd_context_t *ptrUsbPd0Context;
 
@@ -2241,7 +2708,7 @@ typedef struct cy_stc_qi_context
     cy_stc_usbpd_context_t *ptrUsbPd1Context;
 
     /** Stack Timer Context */
-    cy_stc_sw_timer_t *ptrTimerContext;
+    cy_stc_pdutils_sw_timer_t *ptrTimerContext;
 } cy_stc_qi_context_t;
 
 /** \} group_qistack_enums */
@@ -2456,6 +2923,12 @@ void Cy_QiStack_Fsk_ADT(cy_stc_qi_context_t *qiCtx, uint8_t *data, uint8_t type,
  */
 void Cy_QiStack_Fsk_SamsungAck(cy_stc_qi_context_t *qiCtx);
 
+#if CY_QI_HIPP_MODE_EN
+void Cy_QiStack_Fsk_HippVer(cy_stc_qi_context_t *qiCtx);
+void Cy_QiStack_Fsk_HippAbort(cy_stc_qi_context_t *qiCtx);
+void Cy_QiStack_Fsk_HippReplyCode(cy_stc_qi_context_t *qiCtx);
+void Cy_QiStack_Fsk_HippTaInfoReply(cy_stc_qi_context_t *qiCtx);
+#endif
 /** \} group_qistack_functions */
 
 #endif /* CY_QISTACK_COMMON_H */

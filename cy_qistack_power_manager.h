@@ -1,12 +1,12 @@
 /***************************************************************************//**
 * \file cy_qistack_power_manager.h
-* \version 1.0
+* \version 2.0
 *
 * Header file of Qi Power Manager of the QiStack middleware.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021-2022, Cypress Semiconductor Corporation. All rights reserved.
+* Copyright 2022-2023, Cypress Semiconductor Corporation. All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -28,6 +28,8 @@
 
 /** Coil current number of samples for average. */
 #define QI_COIL_CUR_AVG_SAMPLES           (5)
+/** VBUS_C number of samples for average. */
+#define QI_VBUS_VOLT_AVG_SAMPLES          (5)
 
 /** Coil Kp value for low load at 10x scale. Write 10 if intended value is 1. */
 #define QI_COIL_KP_LOW_LOAD               (200)
@@ -45,10 +47,19 @@
 #define QI_PID_REG_CUR_MIN_VAL_MA         (50)
 #define QI_PID_REG_CUR_HYS_MA             (50)
 #define QI_PID_CEP_H_U                    (30u)
+#define QI_PID_CEP_L                      (-30u)
 #define QI_PID_CEP_L_U                    (10u)
 #define QI_PID_CEP_REPEAT_CNT             (10u)
 #define QI_PID_CEP_STABLE_THRESHOLD_VAL   (10)
 #define QI_PID_REG_VOLT_CHNG_MAX_MV       (1000u)
+#define QI_PID_CEP_OSCILLATION_CNT        (5u)
+
+
+/** PID Duty cycle and frequency  */
+#define QI_PID_REG_DUTY_UNIT              (1)
+#define QI_PID_REG_FREQ_UNIT_KHZ          (1)
+#define QI_PID_REG_CEP_HIGH_NEG           (-5)
+
 
 /** PID loop configuration */
 #define QI_TIMER_PID_LOOP_MS              (2u)
@@ -68,12 +79,21 @@
 #define QI_COIL_REG_HB_EXIT_VOLT_MV         (((QI_COIL_REG_HB_ENTER_VOLT_MV) * (2)) + ((QI_COIL_REG_HB_HYS_MV) * (2))) 
 #define QI_COIL_REG_FB_TARGET_VOLT_MV       (QI_COIL_REG_HB_ENTER_VOLT_MV + QI_COIL_REG_HB_HYS_MV)
 
+#if CY_QI_MPA2_COIL
+
+/**
+ * Additional RPx load supported on top of negotiated 
+ * power in percentage. v1.3.x and higher.
+ */
+#define CY_QI_POWER_ADDITIONAL_PER          (45u)
+
+#elif CY_QI_MPA11_COIL
 /**
  * Additional RPx load supported on top of negotiated 
  * power in percentage. v1.3.x and higher.
  */
 #define CY_QI_POWER_ADDITIONAL_PER          (40u)
-
+#endif
 /**
  * Additional RPx load supported on top of negotiated 
  * power in percentage. preious to v1.3.x.
@@ -164,17 +184,13 @@ cy_en_qi_status_t Cy_QiStack_Power_Task(
 * \param qiCtx
 * QiStack Library Context pointer.
 *
-* \param cep
-* Control Error value for PID algorithm.
-*
 * \return
 * CY_QISTACK_STAT_SUCCESS if operation is successful
 * CY_QISTACK_STAT_BAD_PARAM if the input parameters are not valid
 *
 *******************************************************************************/
 cy_en_qi_status_t Cy_QiStack_PID_Trigger(
-       cy_stc_qi_context_t *qiCtx,
-       int8_t controlError);
+       cy_stc_qi_context_t *qiCtx);
 
 /*******************************************************************************
 * Function Name: Cy_QiStack_Get_Present_Volt_Cur
@@ -208,6 +224,15 @@ cy_en_qi_status_t Cy_QiStack_Get_Present_Volt_Cur(cy_stc_qi_context_t *qiCtx);
 *
 *******************************************************************************/
 void Cy_QiStack_ValidSampling_Time_Duration(cy_stc_qi_context_t *qiCtx, uint16_t time);
+
+
+/**
+ * @brief Function provided by Qi Power Layer to populate Helper Variables for Power Transfer, Expectation is CEP value should be 
+ * populated before calling this
+ * 
+ * @param qiCtx 
+ */
+void Cy_QiStack_Power_Manager_Set_Variables(cy_stc_qi_context_t *qiCtx);
 
 /** \} group_qistack_power_functions */
 

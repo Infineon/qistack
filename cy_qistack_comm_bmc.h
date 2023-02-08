@@ -1,12 +1,12 @@
 /***************************************************************************//**
 * \file cy_qistack_comm_bmc.h
-* \version 1.0
+* \version 2.0
 *
 * Header file of Qi BMC decoder of the QiStack middleware.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021-2022, Cypress Semiconductor Corporation. All rights reserved.
+* Copyright 2022-2023, Cypress Semiconductor Corporation. All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -92,7 +92,7 @@
 #else
 /** SPI FIFO trigger threshold for watermark interrupt. */
 #define CY_QI_BMC_RX_SPI_FIFO_MIN_THRESHOLD         (2u)
-#define CY_QI_BMC_RX_SPI_FIFO_THRESHOLD             (8u)
+#define CY_QI_BMC_RX_SPI_FIFO_THRESHOLD             (2u)
 /** SPI FIFO size. */
 #define CY_QI_BMC_RX_SPI_FIFO_SIZE                  (16u)
 /* Minimum samples for zero detection */

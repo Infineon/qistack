@@ -13,15 +13,22 @@ var group__group__qistack__enums =
       [ "pds_scp_cmp_disable", "structcy__stc__qi__app__cbk__t.html#a490f1c86db9d9917e769c4553dde8246", null ],
       [ "set_ask_path", "structcy__stc__qi__app__cbk__t.html#ac16bb2f43af53f14bc9405da1e7af1b9", null ],
       [ "fsk_oper_init", "structcy__stc__qi__app__cbk__t.html#a91f51d15b20d2b884c92be6430e1eed4", null ],
+      [ "fsk_configure", "structcy__stc__qi__app__cbk__t.html#ae1eb77ea7bf7d54aebc10804ffec4640", null ],
       [ "inv_fb_enable", "structcy__stc__qi__app__cbk__t.html#a97954dda9598236658ea2f0234f64095", null ],
       [ "inv_fb_disable", "structcy__stc__qi__app__cbk__t.html#a0db86eafd85ec7e506ac1a99f244b0fe", null ],
+      [ "inv_configure", "structcy__stc__qi__app__cbk__t.html#a8c2b80782d47d86da0ba075fb54dadb6", null ],
+      [ "inv_reset", "structcy__stc__qi__app__cbk__t.html#a13f045be5292d5611996d316459b48db", null ],
+      [ "apply_Anaping_Inv_settings", "structcy__stc__qi__app__cbk__t.html#a69718120f82f8aa02c4a373a42c0c102", null ],
       [ "inv_send_analog_ping", "structcy__stc__qi__app__cbk__t.html#adc4b0feb528240126bb7f38f654e701f", null ],
+      [ "object_Check_Status", "structcy__stc__qi__app__cbk__t.html#ab269e81ad80ce2b418e428f5e91baa5c", null ],
+      [ "apply_Digping_Inv_settings", "structcy__stc__qi__app__cbk__t.html#a42ad75610b01a8459cc0f91c8e89e9b1", null ],
       [ "inv_start_digital_ping", "structcy__stc__qi__app__cbk__t.html#a9875d838881a11bc14eaf9b6996869da", null ],
       [ "inv_stop_digital_ping", "structcy__stc__qi__app__cbk__t.html#a9ac1ddf3ac49c7369ccd57067ad73e72", null ],
+      [ "populate_PID_constants", "structcy__stc__qi__app__cbk__t.html#a7d23380567fe60dbfec1c74ad08c4745", null ],
       [ "coil_src_enable", "structcy__stc__qi__app__cbk__t.html#aae68d5bcb78ae840fb48cef7a0370fcd", null ],
       [ "coil_src_disable", "structcy__stc__qi__app__cbk__t.html#ae7b2c25e00c0fff33d7849460d181850", null ],
       [ "coil_src_enable_status", "structcy__stc__qi__app__cbk__t.html#a1fa32699c95c8daabde9af0be849e770", null ],
-      [ "coil_src_set_voltage", "structcy__stc__qi__app__cbk__t.html#aa18958926a75f540ef3bae022e58f4c1", null ],
+      [ "coil_src_set_voltage", "structcy__stc__qi__app__cbk__t.html#a322aacc2df67c8445e042c0a2e8f0a6c", null ],
       [ "coil_src_ready_status", "structcy__stc__qi__app__cbk__t.html#a46a8c0c16d8433b1ac8ecdcbc0aaf7ec", null ],
       [ "coil_src_get_voltage", "structcy__stc__qi__app__cbk__t.html#a09494f210b58dcbfa3e22f59704eb34c", null ],
       [ "coil_src_get_current", "structcy__stc__qi__app__cbk__t.html#a2c1ff3d2328c297d68af5d8e92ffcf6d", null ],
@@ -50,7 +57,10 @@ var group__group__qistack__enums =
       [ "referencePower", "structcy__stc__qi__pwr__params__t.html#af8ca9266c98d302facdf0019cf80192f", null ],
       [ "guaranteedPower", "structcy__stc__qi__pwr__params__t.html#a2cbed23b5ac8fd3a61fca471e9595972", null ],
       [ "potentialPower", "structcy__stc__qi__pwr__params__t.html#ab80c2e98fe896d727a6c02d67c4cefe5", null ],
-      [ "rePingDelay", "structcy__stc__qi__pwr__params__t.html#a23e9ba1fff831a7e4795a710aea0966f", null ]
+      [ "rePingDelay", "structcy__stc__qi__pwr__params__t.html#a23e9ba1fff831a7e4795a710aea0966f", null ],
+      [ "vbrgSaturationThr", "structcy__stc__qi__pwr__params__t.html#a4e0af6afc4fda12f966c1387aae46473", null ],
+      [ "rawRpp", "structcy__stc__qi__pwr__params__t.html#a60a6b731805d0bc85d4f1d4b0871c600", null ],
+      [ "rppPlossDeferred", "structcy__stc__qi__pwr__params__t.html#aadf017a8a6a4915f76783f9aaebc2430", null ]
     ] ],
     [ "cy_stc_qi_led_state_t", "structcy__stc__qi__led__state__t.html", [
       [ "runLEDtask", "structcy__stc__qi__led__state__t.html#a459111238259055808c40192dc407342", null ],
@@ -75,7 +85,8 @@ var group__group__qistack__enums =
       [ "eptRetryRst", "structcy__stc__qi__ept__t.html#ae9ab835e29a6efd6e91660945655d021", null ],
       [ "eptRetryRep", "structcy__stc__qi__ept__t.html#a7b64959e84d43ea0f3e440fb4248c0b3", null ],
       [ "eptRetryNfc", "structcy__stc__qi__ept__t.html#a0ec204242cd8c8b3a1989ae7be54776d", null ],
-      [ "eptRetryPtxNfc", "structcy__stc__qi__ept__t.html#af57c154cd6c527a73338052c196d0ea9", null ]
+      [ "eptRetryPtxNfc", "structcy__stc__qi__ept__t.html#af57c154cd6c527a73338052c196d0ea9", null ],
+      [ "eptResetPendDPing", "structcy__stc__qi__ept__t.html#acd0f735a20ba3367779eca16f1670dd2", null ]
     ] ],
     [ "cy_stc_qi_status_t", "structcy__stc__qi__status__t.html", [
       [ "activeMask", "structcy__stc__qi__status__t.html#afbdab77314841c4823fd15eaced97dec", null ],
@@ -86,12 +97,13 @@ var group__group__qistack__enums =
       [ "subState", "structcy__stc__qi__status__t.html#aa407237906caf44da1927ec978b97e1a", null ],
       [ "subTask", "structcy__stc__qi__status__t.html#a0a9e6ce3d96b8838b40aa04a87b5a725", null ],
       [ "prevState", "structcy__stc__qi__status__t.html#aab5354aeacf7df12bca4036e0d8ce7ba", null ],
-      [ "prevSubState", "structcy__stc__qi__status__t.html#aca58d3f4e06f6af479fb63e35c9d40f7", null ],
       [ "waitForObjectRemove", "structcy__stc__qi__status__t.html#a8e74af546101ef251db1ba6f915fa882", null ],
       [ "ptxEptReason", "structcy__stc__qi__status__t.html#adb415d601d83fae1cef3abb93b099883", null ],
+      [ "ptxLastEptReason", "structcy__stc__qi__status__t.html#a52495cd5fca6efa6fbedce72bf2f5e9b", null ],
       [ "prxEptReason", "structcy__stc__qi__status__t.html#a984148b96dae4ebbcae0be3acd37f657", null ],
       [ "eptStat", "structcy__stc__qi__status__t.html#aa42a894d60af785b19829a1bfd7395d5", null ],
       [ "rxSignalStr", "structcy__stc__qi__status__t.html#a20a8626acaca6725ec1d0c241bc8dbd1", null ],
+      [ "chargeStat", "structcy__stc__qi__status__t.html#a05a345b4fdb763f8736e01a61a3c96b5", null ],
       [ "anaPingPending", "structcy__stc__qi__status__t.html#aba929ab07630c9360fa1aeabb121ae3b", null ],
       [ "digPingPending", "structcy__stc__qi__status__t.html#a93c9447aff521deacb4062f203816993", null ],
       [ "digPingWakePending", "structcy__stc__qi__status__t.html#a157b59fba871c249c58e5ba3703146b2", null ],
@@ -120,14 +132,12 @@ var group__group__qistack__enums =
       [ "authRxBuffer", "structcy__stc__qi__status__t.html#ae9179218f20c70af3827260e39370953", null ],
       [ "authTxBuffer", "structcy__stc__qi__status__t.html#a05d690dab0107fb94bbc4fce5ed7db02", null ],
       [ "stLed", "structcy__stc__qi__status__t.html#ae52ed1a9106e36a4e07db878f41c329f", null ],
-      [ "qiStUartRingBuf", "structcy__stc__qi__status__t.html#a2eebaa2185e383cb3af05b093969aee7", null ],
-      [ "uartRingDataBuf", "structcy__stc__qi__status__t.html#acfe9c977e2b44cd7b9ece423854369cf", null ]
+      [ "qiStUartRingBuf", "structcy__stc__qi__status__t.html#a2eebaa2185e383cb3af05b093969aee7", null ]
     ] ],
     [ "cy_stc_qi_object_q_factor_t", "structcy__stc__qi__object__q__factor__t.html", [
       [ "freeCounter", "structcy__stc__qi__object__q__factor__t.html#a11f4682b9b1fbe7a8ba63d1a55f2eea8", null ],
       [ "freeCounterIndex", "structcy__stc__qi__object__q__factor__t.html#ad94e6dee1d352152674b251b67a7b93b", null ],
       [ "freeCounterMask", "structcy__stc__qi__object__q__factor__t.html#a3b4663cc98102b5b65b8475474c04149", null ],
-      [ "cc_up_cmp_int_handler", "structcy__stc__qi__object__q__factor__t.html#ab5a63aa38ee87aaf56f7acbd0036f884", null ],
       [ "cc_dn_cmp_int_handler", "structcy__stc__qi__object__q__factor__t.html#ada4b0e9fec0f5bfeb2713e8c6825c9ab", null ],
       [ "pds_scp_cmp_int_handler", "structcy__stc__qi__object__q__factor__t.html#af04a07e78d603ef3f821071f4154bb92", null ],
       [ "qFrequency", "structcy__stc__qi__object__q__factor__t.html#ad8bd4941c69792be70a991fb25a9d0b1", null ],
@@ -136,15 +146,18 @@ var group__group__qistack__enums =
       [ "rxdQfactor", "structcy__stc__qi__object__q__factor__t.html#a5e498c9802f29adfaf2aa7bb9fbdc415", null ],
       [ "rxdRefFreq", "structcy__stc__qi__object__q__factor__t.html#ac69cc609461f2c1f370e0d62d0cdeffc", null ],
       [ "qHighPeakCount", "structcy__stc__qi__object__q__factor__t.html#ad0a1eef9c91252b8b5d83d4c305b5c76", null ],
+      [ "qFreeAirFODThrPer", "structcy__stc__qi__object__q__factor__t.html#a6f2d75e29439d7d2ec3e0c9b8ea4b287", null ],
       [ "qFactorQueue", "structcy__stc__qi__object__q__factor__t.html#ac1111a578eb3a1ad257d33108dca0ef5", null ],
       [ "qFactorQueueDataBuf", "structcy__stc__qi__object__q__factor__t.html#a37c784a6fb95ad6062417c5f95df28e2", null ],
       [ "qPeaksQueue", "structcy__stc__qi__object__q__factor__t.html#a95840f59e38abe5a3d746fd463782489", null ],
       [ "qPeaksQueueDataBuf", "structcy__stc__qi__object__q__factor__t.html#a24fc89a20ba166d5e815fc5cb538fe93", null ],
       [ "qFoDetected", "structcy__stc__qi__object__q__factor__t.html#a282a2c2b11e6838f147a04f7e79388e4", null ],
-      [ "fresFoDetected", "structcy__stc__qi__object__q__factor__t.html#a49ae3d78f12730a9d32fa47bcab1c8a1", null ]
+      [ "fresFoDetected", "structcy__stc__qi__object__q__factor__t.html#a49ae3d78f12730a9d32fa47bcab1c8a1", null ],
+      [ "qFoEnabled", "structcy__stc__qi__object__q__factor__t.html#acdc89d4f92e52a2e652fe554ccca39b5", null ],
+      [ "qSFactorRxFriendly", "structcy__stc__qi__object__q__factor__t.html#a27b20d7d63fa449c7a085cf3bf298c93", null ],
+      [ "qSFactorRxNonFriendly", "structcy__stc__qi__object__q__factor__t.html#a3e91a81dba4cefb2f307007f00b555e4", null ]
     ] ],
     [ "cy_stc_qi_object_power_loss_t", "structcy__stc__qi__object__power__loss__t.html", [
-      [ "isLightLoadDataReady", "structcy__stc__qi__object__power__loss__t.html#a973a0f943219287975c910119cbf1917", null ],
       [ "is2pointCalibReady", "structcy__stc__qi__object__power__loss__t.html#a1877afd838003a87eedb4ef2f8235f5b", null ],
       [ "isCalibLossesReady", "structcy__stc__qi__object__power__loss__t.html#a875db4d08568421df2f484fa96b21671", null ],
       [ "isFirstRppProcessed", "structcy__stc__qi__object__power__loss__t.html#ad0b848e5359e2b5f09370ba7e46c3c63", null ],
@@ -175,11 +188,8 @@ var group__group__qistack__enums =
       [ "thresholdMax", "structcy__stc__qi__object__power__loss__t.html#abe1f564f34c2c67d2d34ac9e7eeb65b6", null ],
       [ "assertCountMax", "structcy__stc__qi__object__power__loss__t.html#a8ea16b27ec1ef921774e15a39b55e859", null ],
       [ "discontinePowerCountMax", "structcy__stc__qi__object__power__loss__t.html#a4a993c1c34caf862baa12b0a36dd4b54", null ],
-      [ "fodCount", "structcy__stc__qi__object__power__loss__t.html#aaacf539ba35365e9d3de068e29892f3a", null ],
-      [ "powerCycleCount", "structcy__stc__qi__object__power__loss__t.html#af11b42e7da4f6a422ecdc8adeeeaf24a", null ],
-      [ "calcPwrLoss", "structcy__stc__qi__object__power__loss__t.html#a1fb26fef4200e71923b6d8ef3ea4e437", null ],
-      [ "txPwrCalibMw", "structcy__stc__qi__object__power__loss__t.html#a75ff3b628fd981fd492895bbc11c1313", null ],
-      [ "prevFOPowLossVal", "structcy__stc__qi__object__power__loss__t.html#a4535b9a37d680851996e65ced33d9030", null ],
+      [ "powLossFODEn", "structcy__stc__qi__object__power__loss__t.html#ad39d3ab58f29f0b3982ddcda03ca5d46", null ],
+      [ "dynamicFODEnabled", "structcy__stc__qi__object__power__loss__t.html#ad78f49ec56107a67d85bdccc19ab13d3", null ],
       [ "pwrlossFodReason", "structcy__stc__qi__object__power__loss__t.html#a79e0d30dfe252f66a2f62ec36d3e83e4", null ]
     ] ],
     [ "cy_stc_qi_object_status_t", "structcy__stc__qi__object__status__t.html", [
@@ -194,11 +204,13 @@ var group__group__qistack__enums =
     [ "cy_stc_qi_ask_pkt_t", "structcy__stc__qi__ask__pkt__t.html", [
       [ "header", "structcy__stc__qi__ask__pkt__t.html#a78fcf2863de81462e82ce8e40fc0f73f", null ],
       [ "msg", "structcy__stc__qi__ask__pkt__t.html#a794e33b4e80db6ab42a05ae2b546d119", null ],
-      [ "checksum", "structcy__stc__qi__ask__pkt__t.html#a8aa122e8fd43cea490d3feeed42ec9ec", null ]
+      [ "checksum", "structcy__stc__qi__ask__pkt__t.html#a8aa122e8fd43cea490d3feeed42ec9ec", null ],
+      [ "dataSize", "structcy__stc__qi__ask__pkt__t.html#a09a88916f8bf16ed30c2e01632553dbc", null ]
     ] ],
     [ "cy_stc_qi_comm_ask_status_t", "structcy__stc__qi__comm__ask__status__t.html", [
-      [ "cc_up_cmp_int_handler", "structcy__stc__qi__comm__ask__status__t.html#a15e858cc5efcfd80b012978291dc5d9b", null ],
       [ "askPktEvent", "structcy__stc__qi__comm__ask__status__t.html#aea90399cb3a9e224a849f4ec1e3ba002", null ],
+      [ "askPktStart", "structcy__stc__qi__comm__ask__status__t.html#a099289d23d7750345aea3187876aacd2", null ],
+      [ "askPktReady", "structcy__stc__qi__comm__ask__status__t.html#a0c71b5edb24f0200db3dc5d886642aaf", null ],
       [ "askPkt", "structcy__stc__qi__comm__ask__status__t.html#a91005c514b30c48eef892ad0fbb806ce", null ],
       [ "askPath", "structcy__stc__qi__comm__ask__status__t.html#a252297fe594ec52f5b1e2e2cc73290a4", null ],
       [ "askPathSeq", "structcy__stc__qi__comm__ask__status__t.html#a312216bfc678afc12f417495ca5a6c28", null ],
@@ -206,6 +218,9 @@ var group__group__qistack__enums =
       [ "askPktErrCnt", "structcy__stc__qi__comm__ask__status__t.html#aa6018dce6a806f92c24a75e4f9ca0ff1", null ],
       [ "noiseFailCEPktErrCnt", "structcy__stc__qi__comm__ask__status__t.html#a85e1acb60f245f8f0b137dd94deb026b", null ],
       [ "askCEPTimeoutRetryCnt", "structcy__stc__qi__comm__ask__status__t.html#a637fc1a82e5027530e73f384c582a921", null ],
+      [ "totalaskPktErrCnt", "structcy__stc__qi__comm__ask__status__t.html#a054834d3fe600be3c6341a7b420c36bd", null ],
+      [ "totalnoiseFailCEPktErrCnt", "structcy__stc__qi__comm__ask__status__t.html#a2df078c55164df43fca784d028997e3d", null ],
+      [ "totalaskCEPTimeoutRetryCnt", "structcy__stc__qi__comm__ask__status__t.html#acc87af9af8d8aec677c19e453b28f110", null ],
       [ "askPathChanged", "structcy__stc__qi__comm__ask__status__t.html#af69588576c9d8b29d8f2975c14000a68", null ],
       [ "askPathPingPhasePending", "structcy__stc__qi__comm__ask__status__t.html#a0201ff57a90bacd7da6cb3b1f8fe94a4", null ],
       [ "askStartPending", "structcy__stc__qi__comm__ask__status__t.html#aab008ae9c2ebac9e3c011d1c02c89e8f", null ],
@@ -220,15 +235,13 @@ var group__group__qistack__enums =
     [ "cy_stc_qi_comm_fsk_status_t", "structcy__stc__qi__comm__fsk__status__t.html", [
       [ "updateParams", "structcy__stc__qi__comm__fsk__status__t.html#a3e7f9bd27ba04acf536b1d547b780d95", null ],
       [ "pktDone", "structcy__stc__qi__comm__fsk__status__t.html#abebf6ffb3eb480682c98e124f222faea", null ],
-      [ "fskCap", "structcy__stc__qi__comm__fsk__status__t.html#a38e3a0fc9224c0ae621a2023f30627c5", null ],
-      [ "fskID", "structcy__stc__qi__comm__fsk__status__t.html#aeff8c757fe23ee0f6e61ad4dbcd15e60", null ]
+      [ "fskCap", "structcy__stc__qi__comm__fsk__status__t.html#a38e3a0fc9224c0ae621a2023f30627c5", null ]
     ] ],
     [ "cy_stc_qi_comm_fsk_oper_t", "structcy__stc__qi__comm__fsk__oper__t.html", [
       [ "edgeCounter", "structcy__stc__qi__comm__fsk__oper__t.html#a2bf4df3c7901fa33629aa1f7caa6e46a", null ],
       [ "edgeCounterIndex", "structcy__stc__qi__comm__fsk__oper__t.html#a1454b4b8ed1cf7f3b67dc97b285ad5d4", null ],
       [ "edgeCounterMask", "structcy__stc__qi__comm__fsk__oper__t.html#afeb94094cafaef4b6e2df1d6a5e535b2", null ],
       [ "edgeCounterIRQType", "structcy__stc__qi__comm__fsk__oper__t.html#a1c87277f9148ccf9d7430065b02ef797", null ],
-      [ "edge_int_handler", "structcy__stc__qi__comm__fsk__oper__t.html#a2b8b621c4551f6850b00812880f1f341", null ],
       [ "periodOpPwmCnt", "structcy__stc__qi__comm__fsk__oper__t.html#a8d163bd80989622221d1c59730e9458c", null ],
       [ "periodModPwmCnt", "structcy__stc__qi__comm__fsk__oper__t.html#ae69225f782d09881896caa6bf1bb49fd", null ],
       [ "periodOpPwmTimer", "structcy__stc__qi__comm__fsk__oper__t.html#aebf5f87c282919c2e1a2a8770b908b96", null ],
@@ -246,7 +259,6 @@ var group__group__qistack__enums =
     ] ],
     [ "cy_stc_qi_comm_ask_bmc_t", "structcy__stc__qi__comm__ask__bmc__t.html", [
       [ "scb", "structcy__stc__qi__comm__ask__bmc__t.html#af50a05ac03ab20baf9001450ff020039", null ],
-      [ "scb_int_handler", "structcy__stc__qi__comm__ask__bmc__t.html#ad9d049cacd79971f491fd4fb61c01d4d", null ],
       [ "cmp_int_handler", "structcy__stc__qi__comm__ask__bmc__t.html#af87a6d0c325754f9cf31086d98deeba3", null ],
       [ "startBitDet", "structcy__stc__qi__comm__ask__bmc__t.html#a7ac2c695f0b1b770f1cceff332078b71", null ],
       [ "isActiveHigh", "structcy__stc__qi__comm__ask__bmc__t.html#a41501d7a8da0d4b0ad189abcd3914ee2", null ],
@@ -284,18 +296,16 @@ var group__group__qistack__enums =
     [ "cy_stc_qi_sampling_parameters_t", "structcy__stc__qi__sampling__parameters__t.html", [
       [ "volt", "structcy__stc__qi__sampling__parameters__t.html#a8247378e93a9a048cef260b5c1ec0b46", null ],
       [ "current", "structcy__stc__qi__sampling__parameters__t.html#a4b261670ec2ff141f080f9a8233c0017", null ],
-      [ "timeStamp", "structcy__stc__qi__sampling__parameters__t.html#afd73fa4a0e4a1ab05026586a3088fa32", null ],
-      [ "wasAskActive", "structcy__stc__qi__sampling__parameters__t.html#ac3175b744b7094f0a88c0664c979596e", null ]
+      [ "timeStamp", "structcy__stc__qi__sampling__parameters__t.html#afd73fa4a0e4a1ab05026586a3088fa32", null ]
     ] ],
     [ "cy_stc_qi_sampling_t", "structcy__stc__qi__sampling__t.html", [
       [ "taskInterval", "structcy__stc__qi__sampling__t.html#a50f47d362645b658af177c47fe94a3f2", null ],
       [ "validSampleStartTime", "structcy__stc__qi__sampling__t.html#a5e5c896d21f4c01a002e657fd35230ba", null ],
-      [ "validSampleEndTime", "structcy__stc__qi__sampling__t.html#a225f2447a653fc5807acc3ed934e2f56", null ],
       [ "startSampling", "structcy__stc__qi__sampling__t.html#a830b0f43634bb05f5fdea62a8fb365d0", null ],
-      [ "ringBuf", "structcy__stc__qi__sampling__t.html#a778b197d304b600b4546d1dd6edef9c5", null ],
-      [ "ringDataBuf", "structcy__stc__qi__sampling__t.html#a4afbce5db272c432bae5b1dbb66fb094", null ]
+      [ "ringBuf", "structcy__stc__qi__sampling__t.html#a778b197d304b600b4546d1dd6edef9c5", null ]
     ] ],
     [ "cy_stc_qi_power_status_t", "structcy__stc__qi__power__status__t.html", [
+      [ "appleModeFbActive", "structcy__stc__qi__power__status__t.html#adb25bab41d37c8aec61f41229b3eaadd", null ],
       [ "coilVoltReq", "structcy__stc__qi__power__status__t.html#ab47e47d1e21e1cf6bb76f97a96827dc5", null ],
       [ "coilVolt", "structcy__stc__qi__power__status__t.html#a7a87560f7094f1be975f9f293dd89749", null ],
       [ "coilCur", "structcy__stc__qi__power__status__t.html#a7cbd86911dfb6dd42d0aa3f12b5bc773", null ],
@@ -308,7 +318,8 @@ var group__group__qistack__enums =
       [ "samsungPPDEReqProcessed", "structcy__stc__qi__samsung__ppde__t.html#ae4dd6f7420def938db873a1bc3aa89ee", null ],
       [ "samsungPPDEActive", "structcy__stc__qi__samsung__ppde__t.html#a4135294dd81d10ada38f36333c58b330", null ],
       [ "reqSamsungPPDE", "structcy__stc__qi__samsung__ppde__t.html#a8edefe0e50fa2405c53e06c478693af3", null ],
-      [ "samsungRxPPDEFeatureEnable", "structcy__stc__qi__samsung__ppde__t.html#a8eba0ef080e7febd3a0e5c2e92acbc1f", null ]
+      [ "samsungRxPPDEFeatureEnable", "structcy__stc__qi__samsung__ppde__t.html#a8eba0ef080e7febd3a0e5c2e92acbc1f", null ],
+      [ "samsungFSKAckRetTimeout", "structcy__stc__qi__samsung__ppde__t.html#a72e5ffcb0ef8e4b1436ab1545de95ed1", null ]
     ] ],
     [ "cy_stc_qi_context_t", "structcy__stc__qi__context__t.html", [
       [ "coilNum", "structcy__stc__qi__context__t.html#a649783af5e8006460967250daf6775da", null ],
@@ -322,7 +333,7 @@ var group__group__qistack__enums =
       [ "qiSamsungStat", "structcy__stc__qi__context__t.html#ad210636f0d6a7407cec1c8d34ff18014", null ],
       [ "ptrUsbPd0Context", "structcy__stc__qi__context__t.html#ad42a3ac81d49d5b8f34b085543968bcb", null ],
       [ "ptrUsbPd1Context", "structcy__stc__qi__context__t.html#acdb666418f555d069ad6b048bf77333d", null ],
-      [ "ptrTimerContext", "structcy__stc__qi__context__t.html#a44b85b431dca0b92355d5139735bfc87", null ]
+      [ "ptrTimerContext", "structcy__stc__qi__context__t.html#aaa78c96703a36092c9ea858b0189407c", null ]
     ] ],
     [ "cy_cb_ask_pkt_evt_t", "group__group__qistack__enums.html#gac1bef0c211c677bb27bd25024cd0d8cc", null ],
     [ "cy_en_qi_status_t", "group__group__qistack__enums.html#ga87b36f45afbb9b439bb03a28f1905eaf", [
@@ -385,6 +396,7 @@ var group__group__qistack__enums =
       [ "CY_QI_APP_EVT_PTX_EPT_REASON", "group__group__qistack__enums.html#gga57d04d40a8168895334778b17c6fd710a98d8609f88c9958087eb859720624093", null ],
       [ "CY_QI_APP_EVT_OBJ_DET_STARTED", "group__group__qistack__enums.html#gga57d04d40a8168895334778b17c6fd710a7820105fe4127d515d6b9adc843abb1c", null ],
       [ "CY_QI_APP_EVT_PWR_LOSS_PWR_CYCLE_COUNT", "group__group__qistack__enums.html#gga57d04d40a8168895334778b17c6fd710a40653675f87b76b6b5d2884adf92b8ea", null ],
+      [ "CY_QI_APP_EVT_ASK_PATH_SWITCH", "group__group__qistack__enums.html#gga57d04d40a8168895334778b17c6fd710a18546e21c3248703e55b72fb723f9ad8", null ],
       [ "CY_QI_APP_TOTAL_EVENTS", "group__group__qistack__enums.html#gga57d04d40a8168895334778b17c6fd710a62ff812911cdb5b4ce9e3b7b90750377", null ]
     ] ],
     [ "cy_en_qi_ask_pkt_evt_t", "group__group__qistack__enums.html#gabcd229e647ed31311b8dc56bc1168e37", [
@@ -397,6 +409,11 @@ var group__group__qistack__enums =
       [ "CY_QI_ASK_EVT_PKT_READY", "group__group__qistack__enums.html#ggabcd229e647ed31311b8dc56bc1168e37ae5ee7746e353b0e5f49171287d90a417", null ],
       [ "CY_QI_ASK_EVT_DET_END", "group__group__qistack__enums.html#ggabcd229e647ed31311b8dc56bc1168e37ae8431b83edb3cb80f458cbc68e9fade2", null ],
       [ "CY_QI_ASK_EVT_MAX", "group__group__qistack__enums.html#ggabcd229e647ed31311b8dc56bc1168e37a75c602214b7a04d6f60d530a00a30d31", null ]
+    ] ],
+    [ "cy_en_qi_Settype", "group__group__qistack__enums.html#ga68a1fa8235e12bf76057bfdb69cb5518", [
+      [ "CY_QI_ANA_PING", "group__group__qistack__enums.html#gga68a1fa8235e12bf76057bfdb69cb5518a1cfd02b48f366281d51d29362593626d", null ],
+      [ "CY_QI_DIG_PING", "group__group__qistack__enums.html#gga68a1fa8235e12bf76057bfdb69cb5518a3bf4c5bae801bdff3b1aa50dc6589ac1", null ],
+      [ "CY_QI_OTHER", "group__group__qistack__enums.html#gga68a1fa8235e12bf76057bfdb69cb5518a3876e786bf4eb1ea91165e398f4d366e", null ]
     ] ],
     [ "cy_en_qi_ask_pkt_t", "group__group__qistack__enums.html#gab48925dc5cc92da971fdc279e52bb774", [
       [ "CY_QI_ASK_SIGNAL_STRENGTH", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a8a25778d94321db13322c89dba1fd37c", null ],
@@ -431,19 +448,19 @@ var group__group__qistack__enums =
       [ "CY_QI_ASK_DATA_AUX_DATA_ODD_6", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a2b1b0a20c9d3b2aeaf3e02512f25b74e", null ],
       [ "CY_QI_ASK_DATA_AUX_DATA_EVEN_7", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a2e5382bc958b5ea6d4e354afdcf14d17", null ],
       [ "CY_QI_ASK_DATA_AUX_DATA_ODD_7", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a9d018eae59f37b40a41ba86cd257abdc", null ],
-      [ "CY_QI_ASK_CONFIG_PROP_1", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774ad05ee391ef17542a6cfaa801bcb06db3", null ],
-      [ "CY_QI_ASK_CONFIG_PROP_2", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a3a60dd0d1fcb48a133d81321fb00ff4b", null ],
+      [ "CY_QI_ASK_CONFIG_PROP_1E", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a16e18ac8d8d56479d3640410745ef226", null ],
+      [ "CY_QI_ASK_CONFIG_PROP_1O", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774aa3b759c0e537ea8b4b37de3d9d81ec87", null ],
+      [ "CY_QI_ASK_CONFIG_PROP_2E", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a776aabfdb5e526565ee48a5b208640d0", null ],
+      [ "CY_QI_ASK_CONFIG_PROP_2O", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a43a582696225b80eb963e792040cc4c6", null ],
       [ "CY_QI_ASK_CONFIG_PROP_3", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a9f08333785b7eddb2613d032ceb5c982", null ],
       [ "CY_QI_ASK_CONFIG_PROP_4", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774acc01709bea009b621841750c66c04d2f", null ],
       [ "CY_QI_ASK_CONFIG_PROP_5", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774ada45363128a588bbd0a44d09b6943889", null ],
       [ "CY_QI_ASK_CONFIG_PROP_6", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a864869330f317297c039e3ab922b95a5", null ],
       [ "CY_QI_ASK_CONFIG_PROP_7", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a568b2ea80817522a927c710324a2a72b", null ],
       [ "CY_QI_ASK_CONFIG_PROP_8", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a57bea71e24809633603a4b176932cc5e", null ],
-      [ "CY_QI_ASK_CONFIG_PROP_9", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774aeda72d613b6d32b96a7fab88071cf52c", null ],
-      [ "CY_QI_ASK_CONFIG_PROP_10", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a55de1aa85c2a9e10a40e4495eefe35f9", null ],
-      [ "CY_QI_ASK_CONFIG_PROP_11", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a2ac5ec6ea115afa5eabf8a687400ca41", null ],
       [ "CY_QI_ASK_CONFIG_PROP_12", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a7ea6272c7ebf61cc19878b87d171bb0a", null ],
-      [ "CY_QI_ASK_CONFIG_PROP_13", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774a7733481853135171560015192be5b316", null ]
+      [ "CY_QI_ASK_CONFIG_PROP_16", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774ae2c92980fb08c8afc58ab75ad5d3917a", null ],
+      [ "CY_QI_ASK_CONFIG_PROP_20", "group__group__qistack__enums.html#ggab48925dc5cc92da971fdc279e52bb774acc1671b50051693bc67fbc19068fce7a", null ]
     ] ],
     [ "cy_en_qi_prx_ept_reason_t", "group__group__qistack__enums.html#gae949812d0b0d5900789979b542bcc450", [
       [ "CY_QI_PRX_EPT_UNKNOWN", "group__group__qistack__enums.html#ggae949812d0b0d5900789979b542bcc450aa729c112cd806a3499e87c10814c102e", null ],
@@ -558,6 +575,7 @@ var group__group__qistack__enums =
       [ "CY_QI_MC_NONE", "group__group__qistack__enums.html#gga3e588c235fd55c5e0c496122e9115cf8ab0185707d20dfe97af1ca945d37a1406", null ],
       [ "CY_QI_MC_IPHONE_1", "group__group__qistack__enums.html#gga3e588c235fd55c5e0c496122e9115cf8aac365bc1ddc7e45ce8861d280335dcdb", null ],
       [ "CY_QI_MC_IPHONE_2", "group__group__qistack__enums.html#gga3e588c235fd55c5e0c496122e9115cf8aa7edfb485dbd3ceb10e6ad2eaf6fda37", null ],
+      [ "CY_QI_MC_SAMSUNG", "group__group__qistack__enums.html#gga3e588c235fd55c5e0c496122e9115cf8adb840c56145be395ecf5d747bd51cd6c", null ],
       [ "CY_QI_MC_MAX", "group__group__qistack__enums.html#gga3e588c235fd55c5e0c496122e9115cf8ace26891ee5008c2e965f263073bf4296", null ]
     ] ],
     [ "cy_en_qi_proto_t", "group__group__qistack__enums.html#gadb8ddc04f596c79ca696724f4d61a3d4", [

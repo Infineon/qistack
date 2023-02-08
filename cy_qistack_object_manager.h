@@ -1,12 +1,12 @@
 /***************************************************************************//**
 * \file cy_qistack_object_manager.h
-* \version 1.0
+* \version 2.0
 *
 * Header file of Qi Object (FO and/or PRx) Manager of the QiStack middleware.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021-2022, Cypress Semiconductor Corporation. All rights reserved.
+* Copyright 2022-2023, Cypress Semiconductor Corporation. All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -37,9 +37,6 @@
 
 /* Maximum Q peaks deviation */
 #define CY_QI_Q_PEAKS_DEVIATION_MAX                     (3u)
-
-/* Minimum number of high peaks for object presence */
-#define CY_QI_HIGH_PEAK_COUNT_FOR_OBJECT_DET            (16u)
 
 /* Q calibration macros, keep signed */
 #define CY_QI_Q_REF_MIN                                 (25)
@@ -193,23 +190,6 @@ cy_en_qi_fod_stat_t Cy_QiStack_Object_Check_Q_Factor_Status(
 cy_en_qi_fod_stat_t Cy_QiStack_Object_Check_Res_Freq_Status(
        cy_stc_qi_context_t *qiCtx, 
        uint32_t fodSupportData);
-
-/*******************************************************************************
-* Function Name: Cy_QiStack_Object_Check_Status
-****************************************************************************//**
-*
-* This function analyzes object presence status.
-*
-* \param qiCtx
-* QiStack Library Context pointer.
-*
-* \return
-* CY_QI_OBJECT_ERROR if analysis error
-* CY_QI_OBJECT_PRESENT if analysis success and object present
-* CY_QI_OBJECT_NOT_PRESENT if analysis success and no object is present
-*******************************************************************************/
-cy_en_qi_object_status_t Cy_QiStack_Object_Check_Status(
-       cy_stc_qi_context_t *qiCtx);
 
 /*******************************************************************************
 * Function Name: Cy_QiStack_Validate_Calib_Data

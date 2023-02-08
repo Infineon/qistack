@@ -1,12 +1,12 @@
 /***************************************************************************//**
 * \file cy_qistack_power_loss.h
-* \version 1.0
+* \version 2.0
 *
 * Header file of Qi Object (FO and/or PRx) Manager of the QiStack middleware.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021-2022, Cypress Semiconductor Corporation. All rights reserved.
+* Copyright 2022-2023, Cypress Semiconductor Corporation. All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -29,8 +29,10 @@
 /** \} group_power_loss_macros */
 
 #define CY_QI_FO_DETECT_EPP_5W                                  (10u)
+#define CY_QI_FO_DETECT_EPP_15W                                 (30u)
 
 #define CY_QI_FO_DETECT_DELTA_PRx_CALIB_MIN                     (1000)
+#define CY_QI_FO_COEFF_MULTIPLIER                               (10000u)
 #define CY_QI_FO_LOW_POWER_THRESHOLD_CHECK                      (600)
 #define CY_QI_FO_ADD_SYS_EFFICIENCY_LOSS                        (100)
 #define CY_QI_MIN_PLOSS_OFFSET                                  (1)
@@ -45,6 +47,8 @@
 
 #define CY_QI_SAMSUNG_FAST_CHARGE_PHONES_Q_FACTOR               (45u) /* This value is obtained from 8 Inter OP Samsung Phone data */
 #define CY_QI_SAMSUNG_FAST_CHARGE_PHONES_Q_FACTOR_FO_SUSPECT    (10)  /* This PERCENTAGE of FO suspect deviation for samsung phone */
+
+#define CY_QI_HIPP_FO_DETECT_MAX_THRESHOLD_ADJUSTMENT           (500u) /* The additional offset for HIPP FO detection at max threshold */
 
 /**
 * \addtogroup group_power_loss_enums
