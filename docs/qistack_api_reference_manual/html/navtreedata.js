@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "QiStack Middleware Library 1.10", "index.html", [
+  [ "QiStack Middleware Library 2.0", "index.html", [
     [ "QiStack Middleware Library", "index.html", [
       [ "General Description", "index.html#section_qistack_general_description", null ],
       [ "Quick Start Guide", "index.html#section_qistack_quick_start", null ],
